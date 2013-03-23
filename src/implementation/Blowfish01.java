@@ -66,6 +66,7 @@ public class Blowfish01
 		xL ^= P[17];
 		xR >>= 32;
 		long encrypted =  xL ^ xR;
+		Packing.unpackLongBigEndian(encrypted, text, 0);
 	}
 	
 	private void swap(long xL, long xR){
@@ -77,8 +78,7 @@ public class Blowfish01
 	}
 	
 	/**
-	 * Unit test main program. Prints the test vectors from the PRESENT
-	 * specification.
+	 * Test main program
 	 */
 	public static void main
 		(String[] args)

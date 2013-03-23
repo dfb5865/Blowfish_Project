@@ -235,31 +235,31 @@ public class Blowfish01
 	   {
 	    encrypt(generator);
 	    P[i]   = Packing.packIntBigEndian(generator, 0);
-	    P[i+1] = Packing.packIntBigEndian(generator, 3);
+	    P[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
 	    encrypt(generator);
 	    S1[i]   = Packing.packIntBigEndian(generator, 0);
-	    S1[i+1] = Packing.packIntBigEndian(generator, 3);
+	    S1[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
 	    encrypt(generator);
 	    S2[i]   = Packing.packIntBigEndian(generator, 0);
-	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
+	    S2[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
 	    encrypt(generator);
 	    S3[i]   = Packing.packIntBigEndian(generator, 0);
-	    S3[i+1] = Packing.packIntBigEndian(generator, 3);
+	    S3[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
 	    encrypt(generator);
 	    S4[i]   = Packing.packIntBigEndian(generator, 0);
-	    S4[i+1] = Packing.packIntBigEndian(generator, 3);
+	    S4[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
 	   
 	}
@@ -276,7 +276,7 @@ public class Blowfish01
 	public void encrypt
 	   (byte[] text){
 		int xL = Packing.packIntBigEndian (text, 0);
-		int xR = Packing.packIntBigEndian (text, 3);
+		int xR = Packing.packIntBigEndian (text, 4);
 
 		//16 round feistel network
 		for(int i=0; i<16; i++){

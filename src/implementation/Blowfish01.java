@@ -59,20 +59,23 @@ public class Blowfish01
 		for(int i=0; i<16; i++){
 			xL ^= P[i];
 			xR ^= F(xL);
-			swap(xL,xR);
+			long temp = xL;
+			xL = xR;
+			xR = temp;
 		}
-		swap(xL,xR);
+		
+		long temp = xL;
+		xL = xR;
+		xR = temp;
+		
 		xR ^= P[16];
 		xL ^= P[17];
 		xR >>= 32;
+		
 		long encrypted =  xL ^ xR;
 		Packing.unpackLongBigEndian(encrypted, text, 0);
 	}
-	
-	private void swap(long xL, long xR){
-		
-	}
-	
+
 	private long F(long x){
 		return 0;
 	}

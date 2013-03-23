@@ -1,5 +1,7 @@
 package implementation;
 
+import edu.rit.util.Packing;
+
 public class Blowfish01
 			implements BlockCipher{
 
@@ -9,7 +11,8 @@ public class Blowfish01
 	 * @return  Block size.
 	 */
 	public int blockSize(){
-		return 0;
+		//Blowfish uses 64 bit blocks
+		return 8;
 	}
 
 	/**
@@ -18,7 +21,9 @@ public class Blowfish01
 	 * @return  Key size.
 	 */
 	public int keySize(){
-		return 0;
+		//Blowfish has a variable length key ranging from 32-448 bits, 
+		//we have chosen to use a 64 bit key.
+		return 8;
 	}
 
 	/**
@@ -40,6 +45,12 @@ public class Blowfish01
 	 * @param  text  Plaintext (on input), ciphertext (on output).
 	 */
 	public void encrypt
-	   (byte[] text){}
+	   (byte[] text){
+		long data = Packing.packLongBigEndian (text, 0);
+		//16 round feistel network
+		for(int i=0; i<16; i++){
+			
+		}
+	}
 
 }

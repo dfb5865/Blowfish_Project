@@ -2,10 +2,11 @@ package implementation;
 
 import java.util.Arrays;
 
+import edu.rit.util.Hex;
 import edu.rit.util.Packing;
 
 public class Blowfish01
-			implements BlockCipher{
+		implements BlockCipher{
 
 	byte[] P;
 	/**
@@ -50,11 +51,10 @@ public class Blowfish01
 	public void encrypt
 	   (byte[] text){
 		//long data = Packing.packLongBigEndian (text, 0);
-		long xL = Packing.packIntBigEndian (text, 0);
+		long zeros = Packing.packLongBigEndian (Hex.toByteArray("1515151500000000"), 0);
+		long xL = Packing.packIntBigEndian (text, 0) & zeros;
 		long xR = Packing.packIntBigEndian (text, 3) << 32;
-		//System.out.println(data);
-		//System.out.println(xL);
-		//System.out.println(xR);
+
 		//16 round feistel network
 		for(int i=0; i<16; i++){
 			xL ^= P[i];

@@ -1,7 +1,10 @@
 package implementation;
 
+
 import java.util.Arrays;
+
 import edu.rit.util.Packing;
+
 
 public class Blowfish01
 		implements BlockCipher{
@@ -240,6 +243,12 @@ public class Blowfish01
 	   for(int i = 0; i < 256; i += 2)
 	   {
 	    encrypt(generator);
+	    S0[i]   = Packing.packIntBigEndian(generator, 0);
+	    S0[i+1] = Packing.packIntBigEndian(generator, 4);
+	   }
+	   for(int i = 0; i < 256; i += 2)
+	   {
+	    encrypt(generator);
 	    S1[i]   = Packing.packIntBigEndian(generator, 0);
 	    S1[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
@@ -254,12 +263,6 @@ public class Blowfish01
 	    encrypt(generator);
 	    S3[i]   = Packing.packIntBigEndian(generator, 0);
 	    S3[i+1] = Packing.packIntBigEndian(generator, 4);
-	   }
-	   for(int i = 0; i < 256; i += 2)
-	   {
-	    encrypt(generator);
-	    S4[i]   = Packing.packIntBigEndian(generator, 0);
-	    S4[i+1] = Packing.packIntBigEndian(generator, 4);
 	   }
 	   
 	}
@@ -324,9 +327,15 @@ public class Blowfish01
 		{
 		BlockCipher cipher = new Blowfish01();
 
-		byte[] plaintextZero = new byte [8];
-		Arrays.fill (plaintextZero, (byte)0x15);
-		cipher.encrypt(plaintextZero);
+		byte[] plaintext = new byte [8];
+		byte[] key = new byte [8];
+		Arrays.fill (plaintext, (byte)0x00);
+		Arrays.fill (key, (byte)0x00);
+		
+		cipher.setKey(key);
+		cipher.encrypt(plaintext);
+		
+		System.out.println(plaintext);
 
 		}
 

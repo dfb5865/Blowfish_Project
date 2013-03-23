@@ -239,23 +239,27 @@ public class Blowfish01
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
+	    encrypt(generator);
 	    S1[i]   = Packing.packIntBigEndian(generator, 0);
 	    S1[i+1] = Packing.packIntBigEndian(generator, 3);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
+	    encrypt(generator);
 	    S2[i]   = Packing.packIntBigEndian(generator, 0);
 	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
-	    S2[i]   = Packing.packIntBigEndian(generator, 0);
-	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
+	    encrypt(generator);
+	    S3[i]   = Packing.packIntBigEndian(generator, 0);
+	    S3[i+1] = Packing.packIntBigEndian(generator, 3);
 	   }
 	   for(int i = 0; i < 256; i += 2)
 	   {
-	    S2[i]   = Packing.packIntBigEndian(generator, 0);
-	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
+	    encrypt(generator);
+	    S4[i]   = Packing.packIntBigEndian(generator, 0);
+	    S4[i+1] = Packing.packIntBigEndian(generator, 3);
 	   }
 	   
 	}

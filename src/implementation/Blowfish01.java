@@ -1,10 +1,13 @@
 package implementation;
 
+import java.util.Arrays;
+
 import edu.rit.util.Packing;
 
 public class Blowfish01
 			implements BlockCipher{
 
+	byte[] P;
 	/**
 	 * Returns this block cipher's block size in bytes.
 	 *
@@ -46,11 +49,46 @@ public class Blowfish01
 	 */
 	public void encrypt
 	   (byte[] text){
-		long data = Packing.packLongBigEndian (text, 0);
+		//long data = Packing.packLongBigEndian (text, 0);
+		long xL = Packing.packIntBigEndian (text, 0);
+		long xR = Packing.packIntBigEndian (text, 3) << 32;
+		//System.out.println(data);
+		//System.out.println(xL);
+		//System.out.println(xR);
 		//16 round feistel network
 		for(int i=0; i<16; i++){
-			
+			xL ^= P[i];
+			xR ^= F(xL);
+			swap(xL,xR);
 		}
+		swap(xL,xR);
+		xR ^= P[16];
+		xL ^= P[17];
+		xR >>= 32;
+		long encrypted =  xL ^ xR;
 	}
+	
+	private void swap(long xL, long xR){
+		
+	}
+	
+	private long F(long x){
+		return 0;
+	}
+	
+	/**
+	 * Unit test main program. Prints the test vectors from the PRESENT
+	 * specification.
+	 */
+	public static void main
+		(String[] args)
+		{
+		BlockCipher cipher = new Blowfish01();
+
+		byte[] plaintextZero = new byte [8];
+		Arrays.fill (plaintextZero, (byte)0x15);
+		cipher.encrypt(plaintextZero);
+
+		}
 
 }

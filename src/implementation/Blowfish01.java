@@ -50,8 +50,7 @@ public class Blowfish01
 	 */
 	public void encrypt
 	   (byte[] text){
-		//long data = Packing.packLongBigEndian (text, 0);
-		long zeros = Packing.packLongBigEndian (Hex.toByteArray("1515151500000000"), 0);
+		long zeros = Packing.packLongBigEndian (Hex.toByteArray("ffffffff00000000"), 0);
 		long xL = Packing.packLongBigEndian (text, 0) & zeros;
 		long xR = Packing.packLongBigEndian (text, 3) << 32;
 
@@ -59,24 +58,28 @@ public class Blowfish01
 		for(int i=0; i<16; i++){
 			xL ^= P[i];
 			xR ^= F(xL);
+			//swap
 			long temp = xL;
 			xL = xR;
 			xR = temp;
 		}
-		
+		//swap
 		long temp = xL;
 		xL = xR;
 		xR = temp;
 		
 		xR ^= P[16];
 		xL ^= P[17];
-		xR >>= 32;
 		
+		xR >>= 32;
 		long encrypted =  xL ^ xR;
 		Packing.unpackLongBigEndian(encrypted, text, 0);
 	}
 
 	private long F(long x){
+		byte[] xL = new byte[8];
+		Packing.unpackLongBigEndian(x, xL, 0);
+		
 		return 0;
 	}
 	

@@ -3,6 +3,7 @@ package implementation;
 
 import java.util.Arrays;
 
+import edu.rit.util.Hex;
 import edu.rit.util.Packing;
 
 
@@ -234,7 +235,7 @@ public class Blowfish01
 	    P[i/4] ^= temp;
 	   }
 	   
-	   for(int i = 0; i < 19; i += 2)
+	   for(int i = 0; i < 18; i += 2)
 	   {
 	    encrypt(generator);
 	    P[i]   = Packing.packIntBigEndian(generator, 0);
@@ -309,10 +310,10 @@ public class Blowfish01
 		byte[] xL = new byte[4];
 		Packing.unpackIntBigEndian(x, xL, 0);
 		
-		byte a = xL[0];
-		byte b = xL[1];
-		byte c = xL[2];
-		byte d = xL[3];
+		int a = xL[0] & 255;
+		int b = xL[1] & 255;
+		int c = xL[2] & 255;
+		int d = xL[3] & 255;
 		
 		int f = ((S0[a] + S1[b]) ^ S2[c]) + S3[d];
 		return f;
@@ -335,7 +336,7 @@ public class Blowfish01
 		cipher.setKey(key);
 		cipher.encrypt(plaintext);
 		
-		System.out.println(plaintext);
+		System.out.println(Hex.toString(plaintext));
 
 		}
 

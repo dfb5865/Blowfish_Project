@@ -52,8 +52,8 @@ public class Blowfish01
 	   (byte[] text){
 		//long data = Packing.packLongBigEndian (text, 0);
 		long zeros = Packing.packLongBigEndian (Hex.toByteArray("1515151500000000"), 0);
-		long xL = Packing.packIntBigEndian (text, 0) & zeros;
-		long xR = Packing.packIntBigEndian (text, 3) << 32;
+		long xL = Packing.packLongBigEndian (text, 0) & zeros;
+		long xR = Packing.packLongBigEndian (text, 3) << 32;
 
 		//16 round feistel network
 		for(int i=0; i<16; i++){

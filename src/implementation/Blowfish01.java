@@ -9,6 +9,11 @@ public class Blowfish01
 		implements BlockCipher{
 
 	byte[] P;
+	int[] S1;
+	int[] S2;
+	int[] S3;
+	int[] S4;
+	
 	/**
 	 * Returns this block cipher's block size in bytes.
 	 *
@@ -50,37 +55,44 @@ public class Blowfish01
 	 */
 	public void encrypt
 	   (byte[] text){
-		long zeros = Packing.packLongBigEndian (Hex.toByteArray("ffffffff00000000"), 0);
-		long xL = Packing.packLongBigEndian (text, 0) & zeros;
-		long xR = Packing.packLongBigEndian (text, 3) << 32;
+		//long zeros = Packing.packLongBigEndian (Hex.toByteArray("ffffffff00000000"), 0);
+		int xL = Packing.packIntBigEndian (text, 0);
+		int xR = Packing.packIntBigEndian (text, 3);
 
 		//16 round feistel network
 		for(int i=0; i<16; i++){
 			xL ^= P[i];
 			xR ^= F(xL);
 			//swap
-			long temp = xL;
+			int temp = xL;
 			xL = xR;
 			xR = temp;
 		}
 		//swap
-		long temp = xL;
+		int temp = xL;
 		xL = xR;
 		xR = temp;
 		
 		xR ^= P[16];
 		xL ^= P[17];
 		
+		//THis needs to be fixed to work with xL and xR being ints
 		xR >>= 32;
 		long encrypted =  xL ^ xR;
 		Packing.unpackLongBigEndian(encrypted, text, 0);
 	}
 
-	private long F(long x){
-		byte[] xL = new byte[8];
-		Packing.unpackLongBigEndian(x, xL, 0);
+	private int F(int x){
+		byte[] xL = new byte[4];
+		Packing.unpackIntBigEndian(x, xL, 0);
 		
-		return 0;
+		byte a = xL[0];
+		byte b = xL[1];
+		byte c = xL[2];
+		byte d = xL[3];
+		
+		int f = ((S1[a] + S2[b]) ^ S3[c]) + S4[d];
+		return f;
 	}
 	
 	/**

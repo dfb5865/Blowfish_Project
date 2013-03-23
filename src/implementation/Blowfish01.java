@@ -191,6 +191,7 @@ public class Blowfish01
 			0x01c36ae4, 0xd6ebe1f9, 0x90d4f869, 0xa65cdea0, 0x3f09252d, 0xc208e69f,
 			0xb74e6132, 0xce77e25b, 0x578fdfe3, 0x3ac372e6};
 	
+	
 	/**
 	 * Returns this block cipher's block size in bytes.
 	 *
@@ -219,7 +220,45 @@ public class Blowfish01
 	 * @param  key  Key.
 	 */
 	public void setKey
-	   (byte[] key){}
+	   (byte[] key){
+	   int temp;
+	   byte[] generator = { 0,0,0,0,0,0,0,0 };
+	   
+	   
+	   for (int i = 0; i < key.length; i+=4)
+	   {	
+	    temp= Packing.packIntBigEndian (key, i);
+	    P[i/4] ^= temp;
+	   }
+	   
+	   for(int i = 0; i < 19; i += 2)
+	   {
+	    encrypt(generator);
+	    P[i]   = Packing.packIntBigEndian(generator, 0);
+	    P[i+1] = Packing.packIntBigEndian(generator, 3);
+	   }
+	   for(int i = 0; i < 256; i += 2)
+	   {
+	    S1[i]   = Packing.packIntBigEndian(generator, 0);
+	    S1[i+1] = Packing.packIntBigEndian(generator, 3);
+	   }
+	   for(int i = 0; i < 256; i += 2)
+	   {
+	    S2[i]   = Packing.packIntBigEndian(generator, 0);
+	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
+	   }
+	   for(int i = 0; i < 256; i += 2)
+	   {
+	    S2[i]   = Packing.packIntBigEndian(generator, 0);
+	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
+	   }
+	   for(int i = 0; i < 256; i += 2)
+	   {
+	    S2[i]   = Packing.packIntBigEndian(generator, 0);
+	    S2[i+1] = Packing.packIntBigEndian(generator, 3);
+	   }
+	   
+	}
 
 	/**
 	 * Encrypt the given plaintext. <TT>text</TT> must be an array of bytes
@@ -271,6 +310,7 @@ public class Blowfish01
 		int f = ((S0[a] + S1[b]) ^ S2[c]) + S3[d];
 		return f;
 	}
+
 	
 	/**
 	 * Test main program

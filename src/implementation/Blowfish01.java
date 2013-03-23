@@ -1,8 +1,6 @@
 package implementation;
 
 import java.util.Arrays;
-
-import edu.rit.util.Hex;
 import edu.rit.util.Packing;
 
 public class Blowfish01
@@ -55,7 +53,6 @@ public class Blowfish01
 	 */
 	public void encrypt
 	   (byte[] text){
-		//long zeros = Packing.packLongBigEndian (Hex.toByteArray("ffffffff00000000"), 0);
 		int xL = Packing.packIntBigEndian (text, 0);
 		int xR = Packing.packIntBigEndian (text, 3);
 

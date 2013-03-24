@@ -238,7 +238,7 @@ public class Blowfish01
 	   S2 = StandardS2;
 	   S3 = StandardS3;
 	   //Force key_size mod 4 == 0, (i.e. is a multiple of 32 bits) 
-	   key_size = key.length / 4 * 4
+	   key_size = key.length / 4 * 4;
 	   //Start with all 0s
 	   byte[] generator = { 0,0,0,0,0,0,0,0 };
 
@@ -246,7 +246,7 @@ public class Blowfish01
 	   
 	   for (int i = 0; i < 18 ; i++)
 	   {
-	    P[i] ^= Packing.packIntBigEndian(key, (i*4) % );
+	    P[i] ^= Packing.packIntBigEndian(key, (i*4) % key_size);
 	   }
 	   
 	   //Replace P,S-Box entries by continuously running through encrypt

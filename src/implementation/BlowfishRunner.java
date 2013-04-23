@@ -2,8 +2,8 @@ package implementation;
 
 
 import java.util.Arrays;
-import java.util.FileInputStream;
-import java.util.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 import edu.rit.util.Hex;
 import edu.rit.util.Packing;
@@ -44,36 +44,50 @@ public class BlowfishRunner
 			System.exit(1);
 		}
 		
-		while(read.available()>0)
+		try
 		{
-			boolean write0s=false;
+			while(read.available()>0)
+			{
+				boolean write0s=false;
 		
-			int i=0;
-			for(i=0; i<8 && read.available()>0; i++)
-			{
-				plaintext[i]=read.read();
-			}
-			plaintext[i++]=1;
-			if(i<8)	//fill block with 1 then 0s
-				for(; i<8; i++) plaintext[i]=0;
-			else	//fill another block with all 0s
-				write0s=true;
+				int i=read.read(plaintext);
+				/*for(i=0; i<8 && read.available()>0; i++)
+				{
+					plaintext[i]=read.read();
+				}*/
+			
+				if(i<8)	//fill block with a 1 then rest 0s
+				{
+					plaintext[i++]=1;
+					if(i<8)
+						for(; i<8; i++) plaintext[i]=0;
+					else	//fill another block with all 0s
+						write0s=true;
+				}
 
-			cipher.encrypt(plaintext);		
-			System.out.println(Hex.toString(plaintext));
+				cipher.encrypt(plaintext);		
+				System.out.println(Hex.toString(plaintext));
 			
-			write.write(plaintext);
-			
-			if(write0s)
-			{
-				for(i=0; i<8; i++) plaintext[i]=0;
-				cipher.encrypt(plaintext);
 				write.write(plaintext);
+			
+				if(write0s)	//add a final plaintext block, padded with 0s
+				{
+					for(i=0; i<8; i++) plaintext[i]=0;
+					cipher.encrypt(plaintext);
+					write.write(plaintext);
+				}
+			
+				//cipher.decrypt(plaintext);
+				//System.out.println(Hex.toString(plaintext));
+			
+				read.close();
+				write.close();
 			}
-			
-			//cipher.decrypt(plaintext);
-			//System.out.println(Hex.toString(plaintext));
-			
+		}
+		catch(java.io.IOException e)
+		{
+			System.out.println("Bad stuff: \n");
+			e.printStackTrace();
 		}
 	}
 }

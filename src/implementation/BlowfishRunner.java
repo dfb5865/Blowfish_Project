@@ -10,7 +10,7 @@ import edu.rit.util.Packing;
 
 /**
  * uses Electronic Codebook Mode to encrypt/decrypt a file
- * @param args	array of length 3 containing the key, plaintext file to read, and ciphertext file to write, respectively
+ * @param args	array of length 4 containing the key, plaintext file to read, and ciphertext file to write, respectively
  */
 public class BlowfishRunner
 {
@@ -40,7 +40,8 @@ public class BlowfishRunner
 		}
 		catch(java.io.FileNotFoundException e)
 		{
-			System.out.println("File not Found: " + args[0]);
+			//System.out.println("File not Found: " + args[1]);
+			e.printStackTrace();
 			System.exit(1);
 		}
 		

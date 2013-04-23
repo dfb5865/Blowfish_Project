@@ -4,6 +4,7 @@ package implementation;
 import java.util.Arrays;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.File;
 
 import edu.rit.util.Hex;
 import edu.rit.util.Packing;
@@ -35,8 +36,13 @@ public class BlowfishRunner
 		
 		try
 		{
-			read=new FileInputStream(new java.io.File(args[1]));
-			write=new FileOutputStream(new java.io.File(args[2]));
+			read=new FileInputStream(new File(args[1]));
+			File outfile=new File(args[2]);
+			if(!outfile.exists())
+			{
+				outfile.createNewFile();
+			}
+			write=new FileOutputStream();
 		}
 		catch(java.io.FileNotFoundException e)
 		{

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 import edu.rit.util.Hex;
 import edu.rit.util.Packing;
@@ -36,15 +37,15 @@ public class BlowfishRunner
 		
 		try
 		{
-			read=new FileInputStream(new File(args[1]));
+			read=new FileInputStream(new File("testinput.txt"));
 			File outfile=new File(args[2]);
 			if(!outfile.exists())
 			{
 				outfile.createNewFile();
 			}
-			write=new FileOutputStream();
+			write=new FileOutputStream(outfile);
 		}
-		catch(java.io.FileNotFoundException e)
+		catch(IOException e)
 		{
 			//System.out.println("File not Found: " + args[1]);
 			e.printStackTrace();
@@ -87,9 +88,10 @@ public class BlowfishRunner
 				//cipher.decrypt(plaintext);
 				//System.out.println(Hex.toString(plaintext));
 			
-				read.close();
-				write.close();
+				
 			}
+			read.close();
+			write.close();
 		}
 		catch(java.io.IOException e)
 		{

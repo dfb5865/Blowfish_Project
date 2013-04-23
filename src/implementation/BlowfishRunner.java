@@ -30,8 +30,8 @@ public class BlowfishRunner
 		
 		cipher.setKey(key);
 
-		Scanner read=null;
-		Scanner write=null;
+		FileInputStream read=null;
+		FileOutputStream write=null;
 		
 		try
 		{
@@ -46,21 +46,30 @@ public class BlowfishRunner
 		
 		while(read.available()>0)
 		{
+			boolean write0s=false;
+		
 			int i=0;
-			for(int i=0; i<8 && read.available()>0; i++)
+			for(i=0; i<8 && read.available()>0; i++)
 			{
 				plaintext[i]=read.read();
 			}
 			plaintext[i++]=1;
 			if(i<8)	//fill block with 1 then 0s
-				for(i=i; i<8; i++) plaintext[i]=0;
-			//else	//fill another block with all 0s
-			//	for(i=0; i<8; i++) plaintext[i]=0;
-			
+				for(; i<8; i++) plaintext[i]=0;
+			else	//fill another block with all 0s
+				write0s=true;
+
 			cipher.encrypt(plaintext);		
 			System.out.println(Hex.toString(plaintext));
 			
 			write.write(plaintext);
+			
+			if(write0s)
+			{
+				for(i=0; i<8; i++) plaintext[i]=0;
+				cipher.encrypt(plaintext);
+				write.write(plaintext);
+			}
 			
 			//cipher.decrypt(plaintext);
 			//System.out.println(Hex.toString(plaintext));

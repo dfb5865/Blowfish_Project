@@ -1,4 +1,4 @@
-JAVA PROFILE 1.0.1, created Tue Apr 23 18:30:17 2013
+JAVA PROFILE 1.0.1, created Tue Apr 23 19:03:49 2013
 
 Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
 
@@ -91,35 +91,585 @@ Ctrl-\ (on Solaris) or by typing Ctrl-Break (on Win32).
 
 THREAD START (obj=50000168, id = 200001, name="main", group="main")
 THREAD END (id = 200001)
-THREAD START (obj=50000168, id = 200005, name="DestroyJavaVM", group="main")
-THREAD END (id = 200005)
+THREAD START (obj=50000168, id = 200004, name="DestroyJavaVM", group="main")
+THREAD END (id = 200004)
+TRACE 300077:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300075:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:326)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300096:
+	implementation.Blowfish02.encrypt(Blowfish02.java:306)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300090:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300085:
+	implementation.Blowfish02.F(Blowfish02.java:372)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300078:
+	implementation.Blowfish02.F(Blowfish02.java:374)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300080:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300088:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300094:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300087:
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300082:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300084:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300102:
+	implementation.Blowfish02.F(Blowfish02.java:371)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300091:
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300114:
+	implementation.Blowfish02.F(Blowfish02.java:373)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300092:
+	implementation.Blowfish02.F(Blowfish02.java:373)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300107:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
 TRACE 300074:
-	implementation.Blowfish01.F(Blowfish01.java:367)
-	implementation.Blowfish01.encrypt(Blowfish01.java:307)
-	implementation.Blowfish01.main(Blowfish01.java:397)
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300079:
+	implementation.Blowfish02.F(Blowfish02.java:372)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300099:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300109:
+	implementation.Blowfish02.F(Blowfish02.java:374)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300105:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300098:
+	implementation.Blowfish02.encrypt(Blowfish02.java:313)
+	implementation.Blowfish02.main(Blowfish02.java:398)
 TRACE 300073:
-	java.lang.ClassLoader.findBootstrapClass(<Unknown Source>:Unknown line)
-	java.lang.ClassLoader.findBootstrapClassOrNull(<Unknown Source>:Unknown line)
-	java.lang.ClassLoader.loadClass(<Unknown Source>:Unknown line)
-	java.lang.ClassLoader.loadClass(<Unknown Source>:Unknown line)
-	sun.misc.Launcher$AppClassLoader.loadClass(<Unknown Source>:Unknown line)
-	java.lang.ClassLoader.loadClass(<Unknown Source>:Unknown line)
-	implementation.Blowfish01.setKey(Blowfish01.java:251)
-	implementation.Blowfish01.main(Blowfish01.java:395)
-TRACE 300034:
-	java.io.WinNTFileSystem.getLength(<Unknown Source>:Unknown line)
-	java.io.File.length(<Unknown Source>:Unknown line)
-	sun.misc.URLClassPath$FileLoader$1.getContentLength(<Unknown Source>:Unknown line)
-	sun.misc.Resource.getBytes(<Unknown Source>:Unknown line)
-	java.net.URLClassLoader.defineClass(<Unknown Source>:Unknown line)
-	java.net.URLClassLoader.access$100(<Unknown Source>:Unknown line)
-	java.net.URLClassLoader$1.run(<Unknown Source>:Unknown line)
-	java.net.URLClassLoader$1.run(<Unknown Source>:Unknown line)
+	implementation.Blowfish02.F(Blowfish02.java:371)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300097:
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300076:
+	implementation.Blowfish02.encrypt(Blowfish02.java:311)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300101:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:95)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300116:
+	implementation.Blowfish02.encrypt(Blowfish02.java:308)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300095:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:326)
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300140:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:93)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300110:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300131:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300103:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300112:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300136:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:93)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300119:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:326)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300081:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300128:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:95)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300111:
+	implementation.Blowfish02.encrypt(Blowfish02.java:312)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300089:
+	implementation.Blowfish02.encrypt(Blowfish02.java:308)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300138:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300093:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300100:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300134:
+	implementation.Blowfish02.encrypt(Blowfish02.java:322)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300139:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300124:
+	implementation.Blowfish02.encrypt(Blowfish02.java:306)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300123:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300146:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300120:
+	implementation.Blowfish02.main(Blowfish02.java:397)
+TRACE 300086:
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300106:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300135:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300129:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300104:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300115:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300113:
+	implementation.Blowfish02.encrypt(Blowfish02.java:322)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300156:
+	implementation.Blowfish02.encrypt(Blowfish02.java:308)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300151:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300083:
+	implementation.Blowfish02.encrypt(Blowfish02.java:319)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300144:
+	implementation.Blowfish02.encrypt(Blowfish02.java:321)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300141:
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300137:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300153:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300143:
+	implementation.Blowfish02.encrypt(Blowfish02.java:321)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300125:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:94)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300118:
+	implementation.Blowfish02.encrypt(Blowfish02.java:318)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300145:
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300130:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:326)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300108:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300127:
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300149:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300161:
+	implementation.Blowfish02.encrypt(Blowfish02.java:321)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300147:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:93)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300148:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:95)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300164:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:326)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300158:
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300132:
+	implementation.Blowfish02.encrypt(Blowfish02.java:317)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300150:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:324)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300159:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300177:
+	implementation.Blowfish02.F(Blowfish02.java:373)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300122:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300162:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300175:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300182:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300184:
+	implementation.Blowfish02.encrypt(Blowfish02.java:312)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300166:
+	implementation.Blowfish02.F(Blowfish02.java:377)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300117:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300154:
+	implementation.Blowfish02.F(Blowfish02.java:371)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300152:
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300168:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300169:
+	implementation.Blowfish02.F(Blowfish02.java:374)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300170:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300133:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300167:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300173:
+	implementation.Blowfish02.encrypt(Blowfish02.java:308)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300165:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:303)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300126:
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300174:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300163:
+	implementation.Blowfish02.F(Blowfish02.java:371)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300176:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300160:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:94)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300157:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300121:
+	edu.rit.util.Packing.packIntBigEndian(Packing.java:96)
+	implementation.Blowfish02.encrypt(Blowfish02.java:302)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300178:
+	implementation.Blowfish02.main(Blowfish02.java:397)
+TRACE 300038:
+	sun.misc.URLClassPath$JarLoader.getJarFile(<Unknown Source>:Unknown line)
+	sun.misc.URLClassPath$JarLoader.access$600(<Unknown Source>:Unknown line)
+	sun.misc.URLClassPath$JarLoader$1.run(<Unknown Source>:Unknown line)
+	sun.misc.URLClassPath$JarLoader$1.run(<Unknown Source>:Unknown line)
 	java.security.AccessController.doPrivileged(<Unknown Source>:Unknown line)
-	java.net.URLClassLoader.findClass(<Unknown Source>:Unknown line)
-CPU SAMPLES BEGIN (total = 5816) Tue Apr 23 18:31:16 2013
+	sun.misc.URLClassPath$JarLoader.ensureOpen(<Unknown Source>:Unknown line)
+	sun.misc.URLClassPath$JarLoader.<init>(<Unknown Source>:Unknown line)
+	sun.misc.URLClassPath$3.run(<Unknown Source>:Unknown line)
+	sun.misc.URLClassPath$3.run(<Unknown Source>:Unknown line)
+	java.security.AccessController.doPrivileged(<Unknown Source>:Unknown line)
+TRACE 300179:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300180:
+	implementation.Blowfish02.encrypt(Blowfish02.java:308)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300181:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:326)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300188:
+	implementation.Blowfish02.F(Blowfish02.java:377)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300142:
+	implementation.Blowfish02.F(Blowfish02.java:372)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300183:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300155:
+	implementation.Blowfish02.F(Blowfish02.java:374)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300185:
+	implementation.Blowfish02.F(Blowfish02.java:371)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300186:
+	implementation.Blowfish02.encrypt(Blowfish02.java:321)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300172:
+	implementation.Blowfish02.F(Blowfish02.java:376)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300171:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:327)
+	implementation.Blowfish02.encrypt(Blowfish02.java:325)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+TRACE 300187:
+	edu.rit.util.Packing.unpackIntBigEndian(Packing.java:328)
+	implementation.Blowfish02.F(Blowfish02.java:369)
+	implementation.Blowfish02.encrypt(Blowfish02.java:309)
+	implementation.Blowfish02.main(Blowfish02.java:398)
+CPU SAMPLES BEGIN (total = 6696) Tue Apr 23 19:04:56 2013
 rank   self  accum   count trace method
-   1 99.97% 99.97%    5814 300074 implementation.Blowfish01.F
-   2  0.02% 99.98%       1 300073 java.lang.ClassLoader.findBootstrapClass
-   3  0.02% 100.00%       1 300034 java.io.WinNTFileSystem.getLength
+   1  9.95%  9.95%     666 300077 edu.rit.util.Packing.unpackIntBigEndian
+   2  7.93% 17.88%     531 300075 edu.rit.util.Packing.unpackIntBigEndian
+   3  4.45% 22.33%     298 300096 implementation.Blowfish02.encrypt
+   4  4.29% 26.61%     287 300090 edu.rit.util.Packing.unpackIntBigEndian
+   5  3.99% 30.60%     267 300085 implementation.Blowfish02.F
+   6  3.96% 34.56%     265 300078 implementation.Blowfish02.F
+   7  3.58% 38.14%     240 300080 implementation.Blowfish02.F
+   8  3.43% 41.58%     230 300088 edu.rit.util.Packing.unpackIntBigEndian
+   9  3.33% 44.91%     223 300094 implementation.Blowfish02.F
+  10  3.30% 48.21%     221 300087 implementation.Blowfish02.F
+  11  3.03% 51.24%     203 300082 implementation.Blowfish02.F
+  12  2.99% 54.23%     200 300084 implementation.Blowfish02.F
+  13  2.90% 57.12%     194 300102 implementation.Blowfish02.F
+  14  2.79% 59.92%     187 300091 implementation.Blowfish02.encrypt
+  15  2.34% 62.26%     157 300114 implementation.Blowfish02.F
+  16  2.31% 64.58%     155 300092 implementation.Blowfish02.F
+  17  2.23% 66.80%     149 300107 edu.rit.util.Packing.unpackIntBigEndian
+  18  2.20% 69.00%     147 300074 implementation.Blowfish02.F
+  19  2.20% 71.19%     147 300079 implementation.Blowfish02.F
+  20  2.12% 73.31%     142 300099 implementation.Blowfish02.F
+  21  1.96% 75.27%     131 300109 implementation.Blowfish02.F
+  22  1.88% 77.15%     126 300105 implementation.Blowfish02.F
+  23  1.70% 78.85%     114 300098 implementation.Blowfish02.encrypt
+  24  1.51% 80.36%     101 300073 implementation.Blowfish02.F
+  25  1.40% 81.77%      94 300097 implementation.Blowfish02.encrypt
+  26  1.36% 83.12%      91 300076 implementation.Blowfish02.encrypt
+  27  1.03% 84.15%      69 300101 edu.rit.util.Packing.packIntBigEndian
+  28  0.87% 85.02%      58 300116 implementation.Blowfish02.encrypt
+  29  0.84% 85.86%      56 300095 edu.rit.util.Packing.unpackIntBigEndian
+  30  0.79% 86.65%      53 300140 edu.rit.util.Packing.packIntBigEndian
+  31  0.75% 87.40%      50 300110 edu.rit.util.Packing.unpackIntBigEndian
+  32  0.69% 88.08%      46 300131 edu.rit.util.Packing.unpackIntBigEndian
+  33  0.67% 88.75%      45 300103 edu.rit.util.Packing.unpackIntBigEndian
+  34  0.63% 89.38%      42 300112 implementation.Blowfish02.F
+  35  0.60% 89.98%      40 300136 edu.rit.util.Packing.packIntBigEndian
+  36  0.54% 90.52%      36 300119 edu.rit.util.Packing.unpackIntBigEndian
+  37  0.52% 91.04%      35 300081 edu.rit.util.Packing.packIntBigEndian
+  38  0.48% 91.52%      32 300128 edu.rit.util.Packing.packIntBigEndian
+  39  0.42% 91.94%      28 300111 implementation.Blowfish02.encrypt
+  40  0.40% 92.34%      27 300089 implementation.Blowfish02.encrypt
+  41  0.39% 92.73%      26 300138 edu.rit.util.Packing.unpackIntBigEndian
+  42  0.39% 93.12%      26 300093 implementation.Blowfish02.F
+  43  0.36% 93.47%      24 300100 edu.rit.util.Packing.packIntBigEndian
+  44  0.34% 93.82%      23 300134 implementation.Blowfish02.encrypt
+  45  0.34% 94.16%      23 300139 edu.rit.util.Packing.unpackIntBigEndian
+  46  0.30% 94.46%      20 300124 implementation.Blowfish02.encrypt
+  47  0.28% 94.74%      19 300123 edu.rit.util.Packing.packIntBigEndian
+  48  0.28% 95.03%      19 300146 edu.rit.util.Packing.unpackIntBigEndian
+  49  0.27% 95.30%      18 300120 implementation.Blowfish02.main
+  50  0.27% 95.56%      18 300086 implementation.Blowfish02.encrypt
+  51  0.27% 95.83%      18 300106 edu.rit.util.Packing.unpackIntBigEndian
+  52  0.25% 96.09%      17 300135 edu.rit.util.Packing.packIntBigEndian
+  53  0.25% 96.34%      17 300129 edu.rit.util.Packing.unpackIntBigEndian
+  54  0.24% 96.58%      16 300104 edu.rit.util.Packing.packIntBigEndian
+  55  0.22% 96.80%      15 300115 edu.rit.util.Packing.packIntBigEndian
+  56  0.22% 97.03%      15 300113 implementation.Blowfish02.encrypt
+  57  0.18% 97.21%      12 300156 implementation.Blowfish02.encrypt
+  58  0.18% 97.39%      12 300151 edu.rit.util.Packing.packIntBigEndian
+  59  0.16% 97.55%      11 300083 implementation.Blowfish02.encrypt
+  60  0.15% 97.70%      10 300144 implementation.Blowfish02.encrypt
+  61  0.13% 97.83%       9 300141 implementation.Blowfish02.encrypt
+  62  0.13% 97.97%       9 300137 edu.rit.util.Packing.packIntBigEndian
+  63  0.12% 98.09%       8 300153 edu.rit.util.Packing.packIntBigEndian
+  64  0.10% 98.19%       7 300143 implementation.Blowfish02.encrypt
+  65  0.10% 98.30%       7 300125 edu.rit.util.Packing.packIntBigEndian
+  66  0.09% 98.39%       6 300118 implementation.Blowfish02.encrypt
+  67  0.09% 98.48%       6 300145 implementation.Blowfish02.encrypt
+  68  0.09% 98.57%       6 300130 edu.rit.util.Packing.unpackIntBigEndian
+  69  0.09% 98.66%       6 300108 edu.rit.util.Packing.packIntBigEndian
+  70  0.07% 98.73%       5 300127 implementation.Blowfish02.encrypt
+  71  0.07% 98.81%       5 300149 edu.rit.util.Packing.packIntBigEndian
+  72  0.07% 98.88%       5 300161 implementation.Blowfish02.encrypt
+  73  0.06% 98.94%       4 300147 edu.rit.util.Packing.packIntBigEndian
+  74  0.06% 99.00%       4 300148 edu.rit.util.Packing.packIntBigEndian
+  75  0.06% 99.06%       4 300164 edu.rit.util.Packing.unpackIntBigEndian
+  76  0.06% 99.12%       4 300158 implementation.Blowfish02.encrypt
+  77  0.06% 99.18%       4 300132 implementation.Blowfish02.encrypt
+  78  0.04% 99.22%       3 300150 edu.rit.util.Packing.unpackIntBigEndian
+  79  0.04% 99.27%       3 300159 edu.rit.util.Packing.unpackIntBigEndian
+  80  0.04% 99.31%       3 300177 implementation.Blowfish02.F
+  81  0.03% 99.34%       2 300122 implementation.Blowfish02.F
+  82  0.03% 99.37%       2 300162 edu.rit.util.Packing.unpackIntBigEndian
+  83  0.03% 99.40%       2 300175 edu.rit.util.Packing.unpackIntBigEndian
+  84  0.03% 99.43%       2 300182 implementation.Blowfish02.F
+  85  0.03% 99.46%       2 300184 implementation.Blowfish02.encrypt
+  86  0.03% 99.49%       2 300166 implementation.Blowfish02.F
+  87  0.03% 99.52%       2 300117 edu.rit.util.Packing.unpackIntBigEndian
+  88  0.03% 99.55%       2 300154 implementation.Blowfish02.F
+  89  0.03% 99.58%       2 300152 implementation.Blowfish02.F
+  90  0.01% 99.60%       1 300168 implementation.Blowfish02.F
+  91  0.01% 99.61%       1 300169 implementation.Blowfish02.F
+  92  0.01% 99.63%       1 300170 edu.rit.util.Packing.unpackIntBigEndian
+  93  0.01% 99.64%       1 300133 edu.rit.util.Packing.packIntBigEndian
+  94  0.01% 99.66%       1 300167 edu.rit.util.Packing.unpackIntBigEndian
+  95  0.01% 99.67%       1 300173 implementation.Blowfish02.encrypt
+  96  0.01% 99.69%       1 300165 edu.rit.util.Packing.packIntBigEndian
+  97  0.01% 99.70%       1 300126 implementation.Blowfish02.F
+  98  0.01% 99.72%       1 300174 edu.rit.util.Packing.unpackIntBigEndian
+  99  0.01% 99.73%       1 300163 implementation.Blowfish02.F
+ 100  0.01% 99.75%       1 300176 edu.rit.util.Packing.packIntBigEndian
+ 101  0.01% 99.76%       1 300160 edu.rit.util.Packing.packIntBigEndian
+ 102  0.01% 99.78%       1 300157 edu.rit.util.Packing.unpackIntBigEndian
+ 103  0.01% 99.79%       1 300121 edu.rit.util.Packing.packIntBigEndian
+ 104  0.01% 99.81%       1 300178 implementation.Blowfish02.main
+ 105  0.01% 99.82%       1 300038 sun.misc.URLClassPath$JarLoader.getJarFile
+ 106  0.01% 99.84%       1 300179 edu.rit.util.Packing.unpackIntBigEndian
+ 107  0.01% 99.85%       1 300180 implementation.Blowfish02.encrypt
+ 108  0.01% 99.87%       1 300181 edu.rit.util.Packing.unpackIntBigEndian
+ 109  0.01% 99.88%       1 300188 implementation.Blowfish02.F
+ 110  0.01% 99.90%       1 300142 implementation.Blowfish02.F
+ 111  0.01% 99.91%       1 300183 edu.rit.util.Packing.unpackIntBigEndian
+ 112  0.01% 99.93%       1 300155 implementation.Blowfish02.F
+ 113  0.01% 99.94%       1 300185 implementation.Blowfish02.F
+ 114  0.01% 99.96%       1 300186 implementation.Blowfish02.encrypt
+ 115  0.01% 99.97%       1 300172 implementation.Blowfish02.F
+ 116  0.01% 99.99%       1 300171 edu.rit.util.Packing.unpackIntBigEndian
+ 117  0.01% 100.00%       1 300187 edu.rit.util.Packing.unpackIntBigEndian
 CPU SAMPLES END

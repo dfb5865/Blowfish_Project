@@ -382,6 +382,7 @@ public class Blowfish01 implements BlockCipher
 	 */
 	public static void main(String[] args)
 	{
+		int numEncryptions = Integer.parseInt(args[0]);
 		BlockCipher cipher = new Blowfish01();
 
 		byte[] plaintext = new byte[8];
@@ -389,15 +390,24 @@ public class Blowfish01 implements BlockCipher
 		Arrays.fill(plaintext, (byte)0x00);
 		Arrays.fill(key, (byte)0x00);
 		
-		cipher.setKey(key);
+		final long startTime = System.currentTimeMillis();
 		
+		cipher.setKey(key);
+		for(int i=0; i<numEncryptions; i++){
+			cipher.encrypt(plaintext);
+		}
+
+		final long endTime = System.currentTimeMillis();
+		System.out.println("Total encryptions: " + numEncryptions);
+		System.out.println("Total execution time: " + (endTime - startTime) + " msecs");
+		/*
 		//*
 		//flip some random bits
 		Math.random();	//initialize
 		plaintext[(int)(Math.random()*plaintext.length)]=1; //(int)(Math.random()*plaintext.length)
 		plaintext[(int)(Math.random()*plaintext.length)]=1;
 		plaintext[(int)(Math.random()*plaintext.length)]=1;
-		plaintext[(int)(Math.random()*plaintext.length)]=1;//*/
+		plaintext[(int)(Math.random()*plaintext.length)]=1;//
 		
 		String plain=Hex.toString(plaintext);
 		System.out.println(plain);
@@ -409,5 +419,6 @@ public class Blowfish01 implements BlockCipher
 		System.out.println(Hex.toString(plaintext));
 		
 		System.out.println(plain.equals(Hex.toString(plaintext)));
+		*/
 	}
 }

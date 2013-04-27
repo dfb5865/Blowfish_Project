@@ -71,6 +71,21 @@ public static void main
 		      System.out.println("Fail! Should be: " + i[2]);
 		    }
 		  }
+		  for (String[] i : TestCases )
+		  {
+		    Blowfish02 c = new Blowfish02();
+		    c.setKey(Hex.toByteArray(i[0]));
+		    byte[] temp = Hex.toByteArray(i[1]);
+		    System.out.print("Test: " + i[1] +" => ");
+		    c.encrypt(temp);
+		    String ct = Hex.toString(temp).toUpperCase();
+		    System.out.print(ct + " Result: ");
+		    if (ct.equals(i[2])){
+		      System.out.println("Pass");
+		    } else {
+		      System.out.println("Fail! Should be: " + i[2]);
+		    }
+		  }
 		}
 
 

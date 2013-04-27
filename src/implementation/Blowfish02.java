@@ -302,6 +302,7 @@ public class Blowfish02 implements BlockCipher
 		int xL = Packing.packIntBigEndian(text, 0);
 		int xR = Packing.packIntBigEndian(text, 4);
 
+		/*
 		//16 round feistel network
 		for(int i=0; i<16; i++)
 		{
@@ -312,17 +313,78 @@ public class Blowfish02 implements BlockCipher
 			xL = xR;
 			xR = temp;
 		}
+		*/
 		
-		//swap
-		int temp = xL;
-		xL = xR;
-		xR = temp;
+		//1
+		xL ^= P[0];
+		xR ^= F(xL);
 		
-		xR ^= P[16];
-		xL ^= P[17];
+		//2
+		xR ^= P[1];
+		xL ^= F(xR);
+
+		//3
+		xL ^= P[2];
+		xR ^= F(xL);
 		
-		Packing.unpackIntBigEndian(xL, text, 0);
-		Packing.unpackIntBigEndian(xR, text, 4);
+		//4
+		xR ^= P[3];
+		xL ^= F(xR);
+		
+		//5
+		xL ^= P[4];
+		xR ^= F(xL);
+		
+		//6
+		xR ^= P[5];
+		xL ^= F(xR);
+		
+		//7
+		xL ^= P[6];
+		xR ^= F(xL);
+		
+		//8
+		xR ^= P[7];
+		xL ^= F(xR);
+		
+		//9
+		xL ^= P[8];
+		xR ^= F(xL);
+		
+		//10
+		xR ^= P[9];
+		xL ^= F(xR);
+		
+		//11
+		xL ^= P[10];
+		xR ^= F(xL);
+		
+		//12
+		xR ^= P[11];
+		xL ^= F(xR);
+		
+		//13
+		xL ^= P[12];
+		xR ^= F(xL);
+		
+		//14
+		xR ^= P[13];
+		xL ^= F(xR);
+		
+		//15
+		xL ^= P[14];
+		xR ^= F(xL);
+		
+		//16
+		xR ^= P[15];
+		xL ^= F(xR);
+		
+		//after Fiestal
+		xL ^= P[16];
+		xR ^= P[17];
+		
+		Packing.unpackIntBigEndian(xR, text, 0);
+		Packing.unpackIntBigEndian(xL, text, 4);
 	}
 
 	/**

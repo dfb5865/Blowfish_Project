@@ -379,14 +379,8 @@ public class Blowfish04 implements BlockCipher
 		xL ^= P[16];
 		xR ^= P[17];
 		
-<<<<<<< HEAD
-		
-		Packing.unpackIntBigEndian(xL, text, 0);
-		Packing.unpackIntBigEndian(xR, text, 4);
-=======
 		Packing.unpackIntBigEndian(xR, text, 0);
 		Packing.unpackIntBigEndian(xL, text, 4);
->>>>>>> de5f05934ea15a23821320e18e5e888a8f4c0626
 	}
 
 	/**
@@ -430,9 +424,8 @@ public class Blowfish04 implements BlockCipher
 
 	private int F(int x)
 	{
-<<<<<<< HEAD
 		return ((S0[x >>> 24] + S1[x >>> 16 & 0xFF]) ^ S2[x >>> 8 & 0xFF]) + S3[x & 0xFF];
-=======
+		/*
 		Packing.unpackIntBigEndian(x, m_xL, 0);
 		
 		int a = m_xL[0] & 255;
@@ -442,7 +435,7 @@ public class Blowfish04 implements BlockCipher
 		
 		int f = ((S0[a] + S1[b]) ^ S2[c]) + S3[d];
 		return f;
->>>>>>> de5f05934ea15a23821320e18e5e888a8f4c0626
+		*/
 	}
 
 	

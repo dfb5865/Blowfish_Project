@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 import edu.rit.util.Hex;
 import edu.rit.util.Packing;
@@ -15,7 +16,7 @@ import edu.rit.util.Packing;
  */
 public class BlowfishRunner
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		BlockCipher cipher = new Blowfish01();
 

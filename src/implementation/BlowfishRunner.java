@@ -42,7 +42,7 @@ public class BlowfishRunner
 			{
 				outfile.createNewFile();
 			}
-			write=new FileOutputStream();
+			//write=new FileOutputStream();
 		}
 		catch(java.io.FileNotFoundException e)
 		{

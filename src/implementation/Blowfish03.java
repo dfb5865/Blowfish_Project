@@ -379,10 +379,6 @@ public class Blowfish03 implements BlockCipher
 		xL ^= P[16];
 		xR ^= P[17];
 		
-		Packing.unpackIntBigEndian(xR, text, 0);
-		Packing.unpackIntBigEndian(xL, text, 4);
-
-		
 		Packing.unpackIntBigEndian(xL, text, 0);
 		Packing.unpackIntBigEndian(xR, text, 4);
 	}

@@ -7,7 +7,7 @@ import edu.rit.util.Hex;
 import edu.rit.util.Packing;
 
 
-public class Blowfish03 implements BlockCipher
+public class Blowfish04 implements BlockCipher
 {
 	byte[] m_xL = new byte[4];
 	
@@ -379,8 +379,8 @@ public class Blowfish03 implements BlockCipher
 		xL ^= P[16];
 		xR ^= P[17];
 		
-		Packing.unpackIntBigEndian(xL, text, 0);
-		Packing.unpackIntBigEndian(xR, text, 4);
+		Packing.unpackIntBigEndian(xR, text, 0);
+		Packing.unpackIntBigEndian(xL, text, 4);
 	}
 
 	/**
@@ -442,7 +442,7 @@ public class Blowfish03 implements BlockCipher
 	public static void main(String[] args)
 	{
 		int numEncryptions = Integer.parseInt(args[0]);
-		BlockCipher cipher = new Blowfish03();
+		BlockCipher cipher = new Blowfish04();
 
 		byte[] plaintext = new byte[8];
 		byte[] key = new byte[8];

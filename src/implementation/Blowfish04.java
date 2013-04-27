@@ -425,17 +425,6 @@ public class Blowfish04 implements BlockCipher
 	private int F(int x)
 	{
 		return ((S0[x >>> 24] + S1[x >>> 16 & 0xFF]) ^ S2[x >>> 8 & 0xFF]) + S3[x & 0xFF];
-		/*
-		Packing.unpackIntBigEndian(x, m_xL, 0);
-		
-		int a = m_xL[0] & 255;
-		int b = m_xL[1] & 255;
-		int c = m_xL[2] & 255;
-		int d = m_xL[3] & 255;
-		
-		int f = ((S0[a] + S1[b]) ^ S2[c]) + S3[d];
-		return f;
-		*/
 	}
 
 	

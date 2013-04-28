@@ -1,6 +1,7 @@
 package implementation;
 import edu.rit.util.Hex;
-import implementation.Blowfish01;
+
+
 
 public class BlowfishKnownVectorTest{
 
@@ -53,40 +54,41 @@ static String[][] TestCases =
 
 
 
-public static void main
-		(String[] args)
-		{
+public static void main (String[] args){
+	    BlockCipher[] bcs = {new Blowfish01(), new Blowfish02(), new Blowfish03(), new Blowfish04(), new Blowfish05() , new Blowfish06()};
+	    for(BlockCipher c : bcs){
+		  boolean epassed = true;
+ 		  boolean dpassed = true;
+
 		  for (String[] i : TestCases )
 		  {
-		    Blowfish01 c = new Blowfish01();
 		    c.setKey(Hex.toByteArray(i[0]));
-		    byte[] temp = Hex.toByteArray(i[1]);
-		    System.out.print("Test: " + i[1] +" => ");
-		    c.encrypt(temp);
-		    String ct = Hex.toString(temp).toUpperCase();
-		    System.out.print(ct + " Result: ");
-		    if (ct.equals(i[2])){
-		      System.out.println("Pass");
-		    } else {
-		      System.out.println("Fail! Should be: " + i[2]);
+		    byte[] text = Hex.toByteArray(i[1]);
+		    
+		    
+		    //test encrypt
+		    c.encrypt(text);
+		    String ct = Hex.toString(text).toUpperCase();
+		    if (!(ct.equals(i[2]))){
+		       epassed = false;
 		    }
-		  }
-		  for (String[] i : TestCases )
-		  {
-		    Blowfish02 c = new Blowfish02();
-		    c.setKey(Hex.toByteArray(i[0]));
-		    byte[] temp = Hex.toByteArray(i[1]);
-		    System.out.print("Test: " + i[1] +" => ");
-		    c.encrypt(temp);
-		    String ct = Hex.toString(temp).toUpperCase();
-		    System.out.print(ct + " Result: ");
-		    if (ct.equals(i[2])){
-		      System.out.println("Pass");
-		    } else {
-		      System.out.println("Fail! Should be: " + i[2]);
+		    
+
+		    //test decrypt
+		    c.decrypt(text);
+		    ct = Hex.toString(text).toUpperCase();
+		    if (!(ct.equals(i[1]))){
+		       dpassed = false;
 		    }
+		    
+		    
+		    
+		    
 		  }
-		}
+  		  
+  		  System.out.printf("Implementation: %s Encryption: %s Decryption: %s%n", c.getClass().getName().substring(15), epassed?"Passed":"Failed", dpassed?"Passed":"Failed");
+	    }
+}
 
 
 

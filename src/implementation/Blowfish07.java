@@ -5,7 +5,7 @@ import java.util.Arrays;
 import edu.rit.util.Hex;
 
 
-public class Blowfish06 implements BlockCipher
+public class Blowfish07 implements BlockCipher
 {
 
   int[] StandardP = {
@@ -242,7 +242,7 @@ public class Blowfish06 implements BlockCipher
     //Force key_size mod 4 == 0, (i.e. is a multiple of 32 bits) 
     key_size = key.length / 4 * 4;
     //Start with all 0s
-    long generator = 0;
+    byte[] generator = {0,0,0,0,0,0,0,0};
     //Xor P with Key bytes
 
     for (int i = 0; i < 18 ; i++)
@@ -257,42 +257,93 @@ public class Blowfish06 implements BlockCipher
     //Replace P,S-Box entries by continuously running through encrypt
     for(int i = 0; i < 18; i += 2)
     {
-      generator = encrypt(generator);
-      P[i]	= (int)(generator >>> 32);
-      P[i+1]  = (int)(generator & 0xFFFFFFFF);
+      encrypt(generator);
+      P[i]	= ((generator[0] & 0xFF )<< 24) |
+		  ((generator[1] & 0xFF )<< 16) |
+		  ((generator[2] & 0xFF )<< 8) |
+		  ((generator[3] & 0xFF )    );
+      P[i+1]  =   ((generator[4] & 0xFF )<< 24) |
+		  ((generator[5] & 0xFF )<< 16) |
+		  ((generator[6] & 0xFF )<< 8) |
+		  ((generator[7] & 0xFF )    );
 
     }
     for(int i = 0; i < 256; i += 2)
     {
-      generator = encrypt(generator);
-      S0[i]	= (int)(generator >>> 32);
-      S0[i+1]  = (int)(generator & 0xFFFFFFFF);
+      encrypt(generator);
+      S0[i]	= ((generator[0] & 0xFF )<< 24) |
+		  ((generator[1] & 0xFF )<< 16) |
+		  ((generator[2] & 0xFF )<< 8) |
+		  ((generator[3] & 0xFF )    );
+      S0[i+1]  =  ((generator[4] & 0xFF )<< 24) |
+		  ((generator[5] & 0xFF )<< 16) |
+		  ((generator[6] & 0xFF )<< 8) |
+		  ((generator[7] & 0xFF )    );
     }
     for(int i = 0; i < 256; i += 2)
     {
-      generator = encrypt(generator);
-      S1[i]	= (int)(generator >>> 32);
-      S1[i+1]  = (int)(generator & 0xFFFFFFFF);
+      encrypt(generator);
+      S1[i]	= ((generator[0] & 0xFF )<< 24) |
+		  ((generator[1] & 0xFF )<< 16) |
+		  ((generator[2] & 0xFF )<< 8) |
+		  ((generator[3] & 0xFF )    );
+      S1[i+1]  =  ((generator[4] & 0xFF )<< 24) |
+		  ((generator[5] & 0xFF )<< 16) |
+		  ((generator[6] & 0xFF )<< 8) |
+		  ((generator[7] & 0xFF )    );
     }
     for(int i = 0; i < 256; i += 2)
     {
-      generator = encrypt(generator);
-      S2[i]	= (int)(generator >>> 32);
-      S2[i+1]  = (int)(generator & 0xFFFFFFFF);
+      encrypt(generator);
+      S2[i]	= ((generator[0] & 0xFF )<< 24) |
+		  ((generator[1] & 0xFF )<< 16) |
+		  ((generator[2] & 0xFF )<< 8) |
+		  ((generator[3] & 0xFF )    );
+      S2[i+1]  =  ((generator[4] & 0xFF )<< 24) |
+		  ((generator[5] & 0xFF )<< 16) |
+		  ((generator[6] & 0xFF )<< 8) |
+		  ((generator[7] & 0xFF )    );
     }
     for(int i = 0; i < 256; i += 2)
     {
-      generator = encrypt(generator);
-      S3[i]	= (int)(generator >>> 32);
-      S3[i+1]  = (int)(generator & 0xFFFFFFFF);
+      encrypt(generator);
+      S3[i]	= ((generator[0] & 0xFF )<< 24) |
+		  ((generator[1] & 0xFF )<< 16) |
+		  ((generator[2] & 0xFF )<< 8) |
+		  ((generator[3] & 0xFF )    );
+      S3[i+1]  =  ((generator[4] & 0xFF )<< 24) |
+		  ((generator[5] & 0xFF )<< 16) |
+		  ((generator[6] & 0xFF )<< 8) |
+		  ((generator[7] & 0xFF )    );
     }
   }
 
 
-  private long encrypt(long text){
 
-    int xL = (int)(text>>>32);
-    int xR = (int)(text & 0xFFFFFFFF);
+
+  /**
+   * Encrypt the given plaintext. <TT>text</TT> must be an array of bytes
+   * whose length is equal to <TT>blockSize()</TT>. On input, <TT>text</TT>
+   * contains the plaintext block. The plaintext block is encrypted using the
+   * key specified in the most recent call to <TT>setKey()</TT>. On output,
+   * <TT>text</TT> contains the ciphertext block.
+   *
+   * @param  text  Plaintext (on input), ciphertext (on output).
+   *
+   * @pre  <TT>setKey()</TT> has been called and keystream has been initialized.
+   */
+  public void encrypt(byte[] text)
+  {
+
+
+      int xL =((text[0] & 0xFF )<< 24) |
+	      ((text[1] & 0xFF )<< 16) |
+	      ((text[2] & 0xFF )<< 8) |
+	      ((text[3] & 0xFF )    ); 
+      int xR =((text[4] & 0xFF )<< 24) |
+	      ((text[5] & 0xFF )<< 16) |
+	      ((text[6] & 0xFF )<< 8) |
+	      ((text[7] & 0xFF )    ); 
 
 
     xL ^= P[0];
@@ -361,53 +412,45 @@ public class Blowfish06 implements BlockCipher
     //after Fiestal
     xL ^= P[16];
     xR ^= P[17];
+      
+    text[0] = (byte)((xR >>> 24)       );
+    text[1] = (byte)((xR >>> 16) & 0xFF);
+    text[2] = (byte)((xR >>>  8) & 0xFF);
+    text[3] = (byte)((xR       ) & 0xFF);
+    text[4] = (byte)((xL >>> 24)       );
+    text[5] = (byte)((xL >>> 16) & 0xFF);
+    text[6] = (byte)((xL >>>  8) & 0xFF);
+    text[7] = (byte)((xL       ) & 0xFF);
+  }
 
 
-    return (((long)xR) << 32) | (((long)xL) & 0xFFFFFFFFL);
-
-
-    }
 
   /**
-   * Encrypt the given plaintext. <TT>text</TT> must be an array of bytes
+   * Decrypt the given ciphertext. <TT>text</TT> must be an array of bytes
    * whose length is equal to <TT>blockSize()</TT>. On input, <TT>text</TT>
-   * contains the plaintext block. The plaintext block is encrypted using the
+   * contains the ciphertext block. The ciphertext block is decrypted using the
    * key specified in the most recent call to <TT>setKey()</TT>. On output,
-   * <TT>text</TT> contains the ciphertext block.
+   * <TT>text</TT> contains the plaintext block.
    *
-   * @param  text  Plaintext (on input), ciphertext (on output).
+   * @param  text  ciphertext (on input), plaintext (on output).
    *
    * @pre  <TT>setKey()</TT> has been called and keystream has been initialized.
    */
-  public void encrypt(byte[] text)
+  public void decrypt(byte[] text)
   {
-    long t = encrypt(
-      (((long)text[0] & 0xFFL )<< 56) |
-      (((long)text[1] & 0xFFL )<< 48) |
-      (((long)text[2] & 0xFFL )<< 40) |
-      (((long)text[3] & 0xFFL )<< 32) |
-      (((long)text[4] & 0xFFL )<< 24) |
-      (((long)text[5] & 0xFFL )<< 16) |
-      (((long)text[6] & 0xFFL )<<  8) |
-      (((long)text[7] & 0xFFL ))
-      );
 
-    text[0] = (byte)((t >>> 56)       );
-    text[1] = (byte)((t >>> 48) & 0xFF);
-    text[2] = (byte)((t >>> 40) & 0xFF);
-    text[3] = (byte)((t >>> 32) & 0xFF);
-    text[4] = (byte)((t >>> 24) & 0xFF);
-    text[5] = (byte)((t >>> 16) & 0xFF);
-    text[6] = (byte)((t >>>  8) & 0xFF);
-    text[7] = (byte)((t       ) & 0xFF);
-  }
+  
 
-  private long decrypt(long text){
-    int xL = (int)(text>>>32);
-    int xR = (int)(text & 0xFFFFFFFF);
+      int xL =((text[0] & 0xFF )<< 24) |
+	      ((text[1] & 0xFF )<< 16) |
+	      ((text[2] & 0xFF )<< 8) |
+	      ((text[3] & 0xFF )    ); 
+      int xR =((text[4] & 0xFF )<< 24) |
+	      ((text[5] & 0xFF )<< 16) |
+	      ((text[6] & 0xFF )<< 8) |
+	      ((text[7] & 0xFF )    ); 
 
-
-    xL ^= P[17];
+	      xL ^= P[17];
     xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
 
     //2
@@ -474,43 +517,14 @@ public class Blowfish06 implements BlockCipher
     xL ^= P[1];
     xR ^= P[0];
 
-
-    return (((long)xR) << 32) | (((long)xL) & 0xFFFFFFFFL);
-    }
-
-  /**
-   * Decrypt the given ciphertext. <TT>text</TT> must be an array of bytes
-   * whose length is equal to <TT>blockSize()</TT>. On input, <TT>text</TT>
-   * contains the ciphertext block. The ciphertext block is decrypted using the
-   * key specified in the most recent call to <TT>setKey()</TT>. On output,
-   * <TT>text</TT> contains the plaintext block.
-   *
-   * @param  text  ciphertext (on input), plaintext (on output).
-   *
-   * @pre  <TT>setKey()</TT> has been called and keystream has been initialized.
-   */
-  public void decrypt(byte[] text)
-  {
-    long t = decrypt(
-      (((long)text[0] & 0xFFL )<< 56) |
-      (((long)text[1] & 0xFFL )<< 48) |
-      (((long)text[2] & 0xFFL )<< 40) |
-      (((long)text[3] & 0xFFL )<< 32) |
-      (((long)text[4] & 0xFFL )<< 24) |
-      (((long)text[5] & 0xFFL )<< 16) |
-      (((long)text[6] & 0xFFL )<<  8) |
-      (((long)text[7] & 0xFFL ))
-      );
-
-    text[0] = (byte)((t >>> 56)       );
-    text[1] = (byte)((t >>> 48) & 0xFF);
-    text[2] = (byte)((t >>> 40) & 0xFF);
-    text[3] = (byte)((t >>> 32) & 0xFF);
-    text[4] = (byte)((t >>> 24) & 0xFF);
-    text[5] = (byte)((t >>> 16) & 0xFF);
-    text[6] = (byte)((t >>>  8) & 0xFF);
-    text[7] = (byte)((t       ) & 0xFF);
-
+    text[0] = (byte)((xR >>> 24)       );
+    text[1] = (byte)((xR >>> 16) & 0xFF);
+    text[2] = (byte)((xR >>>  8) & 0xFF);
+    text[3] = (byte)((xR       ) & 0xFF);
+    text[4] = (byte)((xL >>> 24)       );
+    text[5] = (byte)((xL >>> 16) & 0xFF);
+    text[6] = (byte)((xL >>>  8) & 0xFF);
+    text[7] = (byte)((xL       ) & 0xFF);
   }
 
 
@@ -522,7 +536,7 @@ public class Blowfish06 implements BlockCipher
   public static void main(String[] args)
   {
     int numEncryptions = Integer.parseInt(args[0]);
-    BlockCipher cipher = new Blowfish06();
+    BlockCipher cipher = new Blowfish07();
 
     byte[] plaintext = new byte[8];
     byte[] key = new byte[8];

@@ -55,7 +55,7 @@ public class BlowfishKnownVectorTest{
 
 
 public static void main (String[] args){
-  BlockCipher[] bcs = {new Blowfish01(), new Blowfish02(), new Blowfish03(), new Blowfish04(), new Blowfish05() , new Blowfish06()};
+  BlockCipher[] bcs = {new Blowfish01(), new Blowfish02(), new Blowfish03(), new Blowfish04(), new Blowfish05() , new Blowfish06(),  new Blowfish07()};
   for(BlockCipher c : bcs){
     boolean epassed = true;
     boolean dpassed = true;

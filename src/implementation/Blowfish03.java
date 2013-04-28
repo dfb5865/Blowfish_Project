@@ -236,11 +236,11 @@ public class Blowfish03 implements BlockCipher
 	public void setKey(byte[] key)
 	{	
 		//Reset to default P,S-Boxes
-		P = StandardP;
-		S0 = StandardS0;
-		S1 = StandardS1;
-		S2 = StandardS2;
-		S3 = StandardS3;
+		P = StandardP.clone();
+		S0 = StandardS0.clone();
+		S1 = StandardS1.clone();
+		S2 = StandardS2.clone();
+		S3 = StandardS3.clone();
 		//Force key_size mod 4 == 0, (i.e. is a multiple of 32 bits) 
 		key_size = key.length / 4 * 4;
 		//Start with all 0s
@@ -379,8 +379,8 @@ public class Blowfish03 implements BlockCipher
 		xL ^= P[16];
 		xR ^= P[17];
 		
-		Packing.unpackIntBigEndian(xL, text, 0);
-		Packing.unpackIntBigEndian(xR, text, 4);
+		Packing.unpackIntBigEndian(xR, text, 0);
+		Packing.unpackIntBigEndian(xL, text, 4);
 	}
 
 	/**

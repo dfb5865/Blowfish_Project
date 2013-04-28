@@ -203,7 +203,6 @@ public class Blowfish04 implements BlockCipher
 	int[] S3 = StandardS3;
 	
 	int key_size;
-	
 	/**
 	 * Returns this block cipher's block size in bytes.
 	 *
@@ -236,11 +235,11 @@ public class Blowfish04 implements BlockCipher
 	public void setKey(byte[] key)
 	{	
 		//Reset to default P,S-Boxes
-		P = StandardP;
-		S0 = StandardS0;
-		S1 = StandardS1;
-		S2 = StandardS2;
-		S3 = StandardS3;
+		P = StandardP.clone();
+		S0 = StandardS0.clone();
+		S1 = StandardS1.clone();
+		S2 = StandardS2.clone();
+		S3 = StandardS3.clone();
 		//Force key_size mod 4 == 0, (i.e. is a multiple of 32 bits) 
 		key_size = key.length / 4 * 4;
 		//Start with all 0s
@@ -257,9 +256,13 @@ public class Blowfish04 implements BlockCipher
 		for(int i = 0; i < 18; i += 2)
 		{
 			encrypt(generator);
+			
 			P[i]	= Packing.packIntBigEndian(generator, 0);
 			P[i+1] = Packing.packIntBigEndian(generator, 4);
+			
 		}
+		
+		
 		for(int i = 0; i < 256; i += 2)
 		{
 			encrypt(generator);
@@ -378,6 +381,8 @@ public class Blowfish04 implements BlockCipher
 		//after Fiestal
 		xL ^= P[16];
 		xR ^= P[17];
+		
+
 		
 		Packing.unpackIntBigEndian(xR, text, 0);
 		Packing.unpackIntBigEndian(xL, text, 4);

@@ -11,10 +11,10 @@ import edu.rit.util.Hex;
 import edu.rit.util.Packing;
 
 /**
- * uses Electronic Codebook Mode to encrypt/decrypt a file
- * @param args	array of length 4 containing the key, plaintext file to read, and ciphertext file to write, respectively
+ * uses Electronic Codebook Mode to encrypt a file
+ * @param args	array of length 3 containing the key, plaintext file to read, and ciphertext file to write, respectively
  */
-public class BlowfishRunner
+public class BFencrypt
 {
 	public static void main(String[] args)
 	{
@@ -22,11 +22,15 @@ public class BlowfishRunner
 
 		byte[] plaintext = new byte[8];
 		byte[] key = new byte[8];
+		
+		String[] a=args;
 
 		if(args.length!=3)
 		{
+			a=new String[3];
 			Arrays.fill(key, (byte)0x00);
-			Arrays.fill(plaintext, (byte)0x00);
+			a[1]="BlowfishRunner.java";	//"testinput.txt";
+			a[2]="outfile";
 		}
 		else key=Hex.toByteArray(args[0]);
 		
@@ -37,8 +41,8 @@ public class BlowfishRunner
 		
 		try
 		{
-			read=new FileInputStream(new File("testinput.txt"));
-			File outfile=new File(args[2]);
+			read=new FileInputStream(new File(a[1]));
+			File outfile=new File(a[2]);
 			if(!outfile.exists())
 			{
 				outfile.createNewFile();
@@ -47,7 +51,6 @@ public class BlowfishRunner
 		}
 		catch(IOException e)
 		{
-			//System.out.println("File not Found: " + args[1]);
 			e.printStackTrace();
 			System.exit(1);
 		}
@@ -87,8 +90,6 @@ public class BlowfishRunner
 			
 				//cipher.decrypt(plaintext);
 				//System.out.println(Hex.toString(plaintext));
-			
-				
 			}
 			read.close();
 			write.close();

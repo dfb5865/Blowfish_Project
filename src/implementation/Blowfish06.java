@@ -2,13 +2,12 @@ package implementation;
 
 
 import java.util.Arrays;
-
 import edu.rit.util.Hex;
-import edu.rit.util.Packing;
 
 
-public class Blowfish01 implements BlockCipher
+public class Blowfish06 implements BlockCipher
 {
+
   int[] StandardP = {
     0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344, 0xa4093822, 0x299f31d0,
     0x082efa98, 0xec4e6c89, 0x452821e6, 0x38d01377, 0xbe5466cf, 0x34e90c6c,
@@ -200,7 +199,8 @@ public class Blowfish01 implements BlockCipher
   int[] S2 = StandardS2;
   int[] S3 = StandardS3;
 
-  int key_size;
+  int key_size = 8;
+
 
   /**
    * Returns this block cipher's block size in bytes.
@@ -221,7 +221,7 @@ public class Blowfish01 implements BlockCipher
   public int keySize()
   {
     //Blowfish has a variable length key ranging from 32-448 bits, 
-    //we have chosen to use a 64 bit key.
+    //we have chosen to use a 64 bit key by default.
     return key_size;
   }
 
@@ -242,47 +242,131 @@ public class Blowfish01 implements BlockCipher
     //Force key_size mod 4 == 0, (i.e. is a multiple of 32 bits) 
     key_size = key.length / 4 * 4;
     //Start with all 0s
-    byte[] generator = {0,0,0,0,0,0,0,0};
-
+    long generator = 0;
     //Xor P with Key bytes
 
     for (int i = 0; i < 18 ; i++)
     {
-      P[i] ^= Packing.packIntBigEndian(key, (i*4) % key_size);
+      int j = (i*4) % key_size;
+      P[i] ^= (((long)key[j  ] & 0xFFL)<< 24) | 
+	      (((long)key[j+1] & 0xFFL)<< 16) |
+	      (((long)key[j+2] & 0xFFL)<<  8) |
+	      (((long)key[j+3] & 0xFFL)     ) ;		
     }
 
     //Replace P,S-Box entries by continuously running through encrypt
     for(int i = 0; i < 18; i += 2)
     {
-      encrypt(generator);
-      P[i]	= Packing.packIntBigEndian(generator, 0);
-      P[i+1] = Packing.packIntBigEndian(generator, 4);
+      generator = encrypt(generator);
+      P[i]	= (int)(generator >>> 32);
+      P[i+1]  = (int)(generator & 0xFFFFFFFF);
+
     }
     for(int i = 0; i < 256; i += 2)
     {
-      encrypt(generator);
-      S0[i]	= Packing.packIntBigEndian(generator, 0);
-      S0[i+1] = Packing.packIntBigEndian(generator, 4);
+      generator = encrypt(generator);
+      S0[i]	= (int)(generator >>> 32);
+      S0[i+1]  = (int)(generator & 0xFFFFFFFF);
     }
     for(int i = 0; i < 256; i += 2)
     {
-      encrypt(generator);
-      S1[i]	= Packing.packIntBigEndian(generator, 0);
-      S1[i+1] = Packing.packIntBigEndian(generator, 4);
+      generator = encrypt(generator);
+      S1[i]	= (int)(generator >>> 32);
+      S1[i+1]  = (int)(generator & 0xFFFFFFFF);
     }
     for(int i = 0; i < 256; i += 2)
     {
-      encrypt(generator);
-      S2[i]	= Packing.packIntBigEndian(generator, 0);
-      S2[i+1] = Packing.packIntBigEndian(generator, 4);
+      generator = encrypt(generator);
+      S2[i]	= (int)(generator >>> 32);
+      S2[i+1]  = (int)(generator & 0xFFFFFFFF);
     }
     for(int i = 0; i < 256; i += 2)
     {
-      encrypt(generator);
-      S3[i]=Packing.packIntBigEndian(generator, 0);
-      S3[i+1]=Packing.packIntBigEndian(generator, 4);
+      generator = encrypt(generator);
+      S3[i]	= (int)(generator >>> 32);
+      S3[i+1]  = (int)(generator & 0xFFFFFFFF);
     }
   }
+
+
+  private long encrypt(long text){
+
+    int xL = (int)(text>>>32);
+    int xR = (int)(text & 0xFFFFFFFF);
+
+
+    xL ^= P[0];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //2
+    xR ^= P[1];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //3
+    xL ^= P[2];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //4
+    xR ^= P[3];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //5
+    xL ^= P[4];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //6
+    xR ^= P[5];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //7
+    xL ^= P[6];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //8
+    xR ^= P[7];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //9
+    xL ^= P[8];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //10
+    xR ^= P[9];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //11
+    xL ^= P[10];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //12
+    xR ^= P[11];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //13
+    xL ^= P[12];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //14
+    xR ^= P[13];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //15
+    xL ^= P[14];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //16
+    xR ^= P[15];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //after Fiestal
+    xL ^= P[16];
+    xR ^= P[17];
+
+
+    return (((long)xR) << 32) | (((long)xL) & 0xFFFFFFFFL);
+
+
+    }
 
   /**
    * Encrypt the given plaintext. <TT>text</TT> must be an array of bytes
@@ -297,31 +381,102 @@ public class Blowfish01 implements BlockCipher
    */
   public void encrypt(byte[] text)
   {
-    int xL = Packing.packIntBigEndian(text, 0);
-    int xR = Packing.packIntBigEndian(text, 4);
+    long t = encrypt(
+      (((long)text[0] & 0xFFL )<< 56) |
+      (((long)text[1] & 0xFFL )<< 48) |
+      (((long)text[2] & 0xFFL )<< 40) |
+      (((long)text[3] & 0xFFL )<< 32) |
+      (((long)text[4] & 0xFFL )<< 24) |
+      (((long)text[5] & 0xFFL )<< 16) |
+      (((long)text[6] & 0xFFL )<<  8) |
+      (((long)text[7] & 0xFFL ))
+      );
 
-    //16 round feistel network
-    for(int i=0; i<16; i++)
-    {
-      xL ^= P[i];
-      xR ^= F(xL);
-      //swap
-      int temp = xL;
-      xL = xR;
-      xR = temp;
-    }
-
-    //swap
-    int temp = xL;
-    xL = xR;
-    xR = temp;
-
-    xR ^= P[16];
-    xL ^= P[17];
-
-    Packing.unpackIntBigEndian(xL, text, 0);
-    Packing.unpackIntBigEndian(xR, text, 4);
+    text[0] = (byte)((t >>> 56)       );
+    text[1] = (byte)((t >>> 48) & 0xFF);
+    text[2] = (byte)((t >>> 40) & 0xFF);
+    text[3] = (byte)((t >>> 32) & 0xFF);
+    text[4] = (byte)((t >>> 24) & 0xFF);
+    text[5] = (byte)((t >>> 16) & 0xFF);
+    text[6] = (byte)((t >>>  8) & 0xFF);
+    text[7] = (byte)((t       ) & 0xFF);
   }
+
+  private long decrypt(long text){
+    int xL = (int)(text>>>32);
+    int xR = (int)(text & 0xFFFFFFFF);
+
+
+    xL ^= P[17];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //2
+    xR ^= P[16];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //3
+    xL ^= P[15];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //4
+    xR ^= P[14];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //5
+    xL ^= P[13];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //6
+    xR ^= P[12];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //7
+    xL ^= P[11];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //8
+    xR ^= P[10];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //9
+    xL ^= P[9];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //10
+    xR ^= P[8];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //11
+    xL ^= P[7];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //12
+    xR ^= P[6];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //13
+    xL ^= P[5];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //14
+    xR ^= P[4];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //15
+    xL ^= P[3];
+    xR ^= (((S0[xL >>> 24] + S1[xL >>> 16 & 0xFF]) ^ S2[xL >>> 8 & 0xFF]) + S3[xL & 0xFF]);
+
+    //16
+    xR ^= P[2];
+    xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
+
+    //after Fiestal
+    xL ^= P[1];
+    xR ^= P[0];
+
+
+    return (((long)xR) << 32) | (((long)xL) & 0xFFFFFFFFL);
+    }
 
   /**
    * Decrypt the given ciphertext. <TT>text</TT> must be an array of bytes
@@ -336,45 +491,29 @@ public class Blowfish01 implements BlockCipher
    */
   public void decrypt(byte[] text)
   {
-    int xL = Packing.packIntBigEndian(text, 0);
-    int xR = Packing.packIntBigEndian(text, 4);
+    long t = decrypt(
+      (((long)text[0] & 0xFFL )<< 56) |
+      (((long)text[1] & 0xFFL )<< 48) |
+      (((long)text[2] & 0xFFL )<< 40) |
+      (((long)text[3] & 0xFFL )<< 32) |
+      (((long)text[4] & 0xFFL )<< 24) |
+      (((long)text[5] & 0xFFL )<< 16) |
+      (((long)text[6] & 0xFFL )<<  8) |
+      (((long)text[7] & 0xFFL ))
+      );
 
-    //16 round feistel network
-    for(int i=0; i<16; i++)
-    {
-      xL ^= P[17-i];
-      xR ^= F(xL);
-      //swap
-      int temp = xL;
-      xL = xR;
-      xR = temp;
-    }
+    text[0] = (byte)((t >>> 56)       );
+    text[1] = (byte)((t >>> 48) & 0xFF);
+    text[2] = (byte)((t >>> 40) & 0xFF);
+    text[3] = (byte)((t >>> 32) & 0xFF);
+    text[4] = (byte)((t >>> 24) & 0xFF);
+    text[5] = (byte)((t >>> 16) & 0xFF);
+    text[6] = (byte)((t >>>  8) & 0xFF);
+    text[7] = (byte)((t       ) & 0xFF);
 
-    //swap
-    int temp = xL;
-    xL = xR;
-    xR = temp;
-
-    xR ^= P[1];
-    xL ^= P[0];
-
-    Packing.unpackIntBigEndian(xL, text, 0);
-    Packing.unpackIntBigEndian(xR, text, 4);
   }
 
-  private int F(int x)
-  {
-    byte[] xL = new byte[4];
-    Packing.unpackIntBigEndian(x, xL, 0);
 
-    int a = xL[0] & 255;
-    int b = xL[1] & 255;
-    int c = xL[2] & 255;
-    int d = xL[3] & 255;
-
-    int f = ((S0[a] + S1[b]) ^ S2[c]) + S3[d];
-    return f;
-  }
 
 
   /**
@@ -383,7 +522,7 @@ public class Blowfish01 implements BlockCipher
   public static void main(String[] args)
   {
     int numEncryptions = Integer.parseInt(args[0]);
-    BlockCipher cipher = new Blowfish01();
+    BlockCipher cipher = new Blowfish06();
 
     byte[] plaintext = new byte[8];
     byte[] key = new byte[8];

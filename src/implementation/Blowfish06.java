@@ -248,11 +248,10 @@ public class Blowfish06 implements BlockCipher
     for (int i = 0; i < 18 ; i++)
     {
       int j = (i*4) % key_size;
-      ;
-      P[i] ^= (long)key[j  ] << 24 | 
-      (long)key[j+1] << 16 |
-      (long)key[j+2] <<  8 |
-      (long)key[j+3];		
+      P[i] ^= (((long)key[j  ] & 0xFFL)<< 24) | 
+	      (((long)key[j+1] & 0xFFL)<< 16) |
+	      (((long)key[j+2] & 0xFFL)<<  8) |
+	      (((long)key[j+3] & 0xFFL)     ) ;		
     }
 
     //Replace P,S-Box entries by continuously running through encrypt
@@ -384,14 +383,14 @@ public class Blowfish06 implements BlockCipher
   public void encrypt(byte[] text)
   {
     long t = encrypt(
-      (long)text[0] << 56 |
-      (long)text[1] << 48 |
-      (long)text[2] << 40 |
-      (long)text[3] << 32 |
-      (long)text[4] << 24 |
-      (long)text[5] << 16 |
-      (long)text[6] <<  8 |
-      (long)text[7]      
+      (((long)text[0] & 0xFFL )<< 56) |
+      (((long)text[1] & 0xFFL )<< 48) |
+      (((long)text[2] & 0xFFL )<< 40) |
+      (((long)text[3] & 0xFFL )<< 32) |
+      (((long)text[4] & 0xFFL )<< 24) |
+      (((long)text[5] & 0xFFL )<< 16) |
+      (((long)text[6] & 0xFFL )<<  8) |
+      (((long)text[7] & 0xFFL ))
       );
 
     text[0] = (byte)((t >>> 56)       );
@@ -494,14 +493,14 @@ public class Blowfish06 implements BlockCipher
   public void decrypt(byte[] text)
   {
     long t = decrypt(
-      (long)text[0] << 56 |
-      (long)text[1] << 48 |
-      (long)text[2] << 40 |
-      (long)text[3] << 32 |
-      (long)text[4] << 24 |
-      (long)text[5] << 16 |
-      (long)text[6] <<  8 |
-      (long)text[7]      
+      (((long)text[0] & 0xFFL )<< 56) |
+      (((long)text[1] & 0xFFL )<< 48) |
+      (((long)text[2] & 0xFFL )<< 40) |
+      (((long)text[3] & 0xFFL )<< 32) |
+      (((long)text[4] & 0xFFL )<< 24) |
+      (((long)text[5] & 0xFFL )<< 16) |
+      (((long)text[6] & 0xFFL )<<  8) |
+      (((long)text[7] & 0xFFL ))
       );
 
     text[0] = (byte)((t >>> 56)       );

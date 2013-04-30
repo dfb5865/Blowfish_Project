@@ -29,7 +29,7 @@ public class BFencrypt
 		{
 			a=new String[3];
 			Arrays.fill(key, (byte)0x00);
-			a[1]="BlowfishRunner.java";	//"testinput.txt";
+			a[1]="testinput.txt";	//"testinput.txt";
 			a[2]="outfile";
 		}
 		else key=Hex.toByteArray(args[0]);

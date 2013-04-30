@@ -87,8 +87,54 @@ public static void main (String[] args){
     }
 
     System.out.printf("Implementation: %s Encryption: %s Decryption: %s%n", c.getClass().getName().substring(15), epassed?"Passed":"Failed", dpassed?"Passed":"Failed");
+    
+    }
+  test1();
+  System.out.println();
+  test7();
+  }
+
+public static void test1
+		()
+		{
+		  for (String[] i : TestCases )
+		  {
+		    Blowfish01 c = new Blowfish01();
+		    c.setKey(Hex.toByteArray(i[0]));
+		    String key = i[0];
+		    byte[] temp = Hex.toByteArray(i[1]);
+		    System.out.print("Test: Key=" + key +" Plaintext=" + i[1] + " => ");
+		    c.encrypt(temp);
+		    String ct = Hex.toString(temp).toUpperCase();
+		    System.out.print(ct + " Result: ");
+		    if (ct.equals(i[2])){
+		      System.out.println("Pass");
+		    } else {
+		      System.out.println("Fail! Should be: " + i[2]);
+		    }
+		  }
+		}
+
+public static void test7
+()
+{
+  for (String[] i : TestCases )
+  {
+    Blowfish07 c = new Blowfish07();
+    c.setKey(Hex.toByteArray(i[0]));
+    String key = i[0];
+    byte[] temp = Hex.toByteArray(i[1]);
+    System.out.print("Test: Key=" + key +" Plaintext=" + i[1] + " => ");
+    c.encrypt(temp);
+    String ct = Hex.toString(temp).toUpperCase();
+    System.out.print(ct + " Result: ");
+    if (ct.equals(i[2])){
+      System.out.println("Pass");
+    } else {
+      System.out.println("Fail! Should be: " + i[2]);
     }
   }
+}
 
 
 

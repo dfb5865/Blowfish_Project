@@ -5,6 +5,7 @@ import edu.rit.util.Packing;
 
 public class Blowfish01 implements BlockCipher, Decryptable
 {
+	//Initial values of p-array and s-boxes set to hex digits of pi
 	int[] StandardP = {
 			0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344, 0xa4093822, 0x299f31d0,
 			0x082efa98, 0xec4e6c89, 0x452821e6, 0x38d01377, 0xbe5466cf, 0x34e90c6c,
@@ -190,12 +191,14 @@ public class Blowfish01 implements BlockCipher, Decryptable
 			0x01c36ae4, 0xd6ebe1f9, 0x90d4f869, 0xa65cdea0, 0x3f09252d, 0xc208e69f,
 			0xb74e6132, 0xce77e25b, 0x578fdfe3, 0x3ac372e6};
 
+	//Initialize p-array and s-boxes
 	int[] P = StandardP;
 	int[] S0 = StandardS0;
 	int[] S1 = StandardS1;
 	int[] S2 = StandardS2;
 	int[] S3 = StandardS3;
 
+	//Assume inital key size of 64 bits (this will change later)
 	int key_size = 8;
 
 	/**
@@ -307,7 +310,7 @@ public class Blowfish01 implements BlockCipher, Decryptable
 			 xR = temp;
 		 }
 
-		 //swap
+		 //undo last swap
 		 int temp = xL;
 		 xL = xR;
 		 xR = temp;
@@ -315,6 +318,7 @@ public class Blowfish01 implements BlockCipher, Decryptable
 		 xR ^= P[16];
 		 xL ^= P[17];
 
+		 //Recombine xL and xR
 		 Packing.unpackIntBigEndian(xL, text, 0);
 		 Packing.unpackIntBigEndian(xR, text, 4);
 	 }
@@ -338,6 +342,7 @@ public class Blowfish01 implements BlockCipher, Decryptable
 		 //16 round feistel network
 		 for(int i=0; i<16; i++)
 		 {
+			 //Use p-array in reverse order
 			 xL ^= P[17-i];
 			 xR ^= F(xL);
 			 //swap
@@ -346,7 +351,7 @@ public class Blowfish01 implements BlockCipher, Decryptable
 			 xR = temp;
 		 }
 
-		 //swap
+		//undo last swap
 		 int temp = xL;
 		 xL = xR;
 		 xR = temp;
@@ -354,12 +359,14 @@ public class Blowfish01 implements BlockCipher, Decryptable
 		 xR ^= P[1];
 		 xL ^= P[0];
 
+		//Recombine xL and xR
 		 Packing.unpackIntBigEndian(xL, text, 0);
 		 Packing.unpackIntBigEndian(xR, text, 4);
 	 }
 
 	 private int F(int x)
 	 {
+		 //Split 32 bits into 8 bit quarters
 		 byte[] xL = new byte[4];
 		 Packing.unpackIntBigEndian(x, xL, 0);
 
@@ -368,6 +375,7 @@ public class Blowfish01 implements BlockCipher, Decryptable
 		 int c = xL[2] & 255;
 		 int d = xL[3] & 255;
 
+		 //use quarters as indexes into s-boxes
 		 int f = ((S0[a] + S1[b]) ^ S2[c]) + S3[d];
 		 return f;
 	 }

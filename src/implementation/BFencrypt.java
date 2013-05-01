@@ -3,6 +3,7 @@ package implementation;
 
 import java.util.Arrays;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -19,41 +20,60 @@ public class BFencrypt
 	public static void main(String[] args)
 	{
 		BlockCipher cipher = new Blowfish01();
-
-		byte[] plaintext = new byte[8];
-		byte[] key = new byte[8];
+		byte[] plaintext;
+		byte[] key;
 		
-		String[] a=args;
-
-		if(args.length!=3)
+		if(args.length!=4)
 		{
-			a=new String[3];
-			Arrays.fill(key, (byte)0x00);
-			a[1]="testinput.txt";	//"testinput.txt";
-			a[2]="outfile";
+			/*TODO: Print help and exit*/
 		}
-		else key=Hex.toByteArray(args[0]);
+
+		
+		//second arg: Key		
+		
+		try{			
+			if(args[1].length() != 16){
+				throw new IllegalArgumentException();
+			}
+			key=Hex.toByteArray(args[0]);
+		} catch (IllegalArgumentException e) {
+			System.err.println("Argument 2: Key must be a string of hexadecimal characters.");
+			return;
+		}
+		
+		
+		
+		//third arg source file
+		
+		FileInputStream srcfile=null;
+		try
+		{
+			srcfile = new FileInputStream(new File(args[2]));
+		}
+		catch( FileNotFoundException e){
+			System.err.printf("inputfile: File not found: %s",args[2]);
+			return;
+		} 
+		
+		
+		//fourth arg dest file
+		
+		FileOutputStream dstfile=null;
+		try
+		{
+			dstfile = new FileOutputStream(args[3]);
+		}
+		catch( FileNotFoundException e ){
+			System.err.printf("outputfile: Unable to open file for writing: \"%s\"%n%s%n", args[2],e.getMessage());
+			return;
+		} 
+		
 		
 		cipher.setKey(key);
 
-		FileInputStream read=null;
-		FileOutputStream write=null;
 		
-		try
-		{
-			read=new FileInputStream(new File(a[1]));
-			File outfile=new File(a[2]);
-			if(!outfile.exists())
-			{
-				outfile.createNewFile();
-			}
-			write=new FileOutputStream(outfile);
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-			System.exit(1);
-		}
+		
+		
 		
 		try
 		{
@@ -94,10 +114,51 @@ public class BFencrypt
 			read.close();
 			write.close();
 		}
-		catch(java.io.IOException e)
-		{
-			System.out.println("Bad stuff: \n");
-			e.printStackTrace();
+		
+		
+		//first arg mode
+		
+		if(args[0].equals("-d") || args[0].equals("--decrypt") || args[0].equals("d") || args[0].equals("decrypt")){
+			
+		}else if(args[0].equals("-d") || args[0].equals("--decrypt") || args[0].equals("d") || args[0].equals("decrypt")){
+			
+		} else {
+			
 		}
+		
+		
+		
 	}
+	
+	
+	private void encryptECB(BlockCipher cipher, byte[] text){
+		cipher.encrypt(text);
+	}
+	
+	private void decryptECB(){Blowfish cipher, byte[] text
+		cipher.decrypt(text)
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

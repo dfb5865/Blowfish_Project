@@ -15,7 +15,7 @@ public class BlowfishPerformanceTest {
 		}
 		if(args[0].equals("Blowfish01") || args[0].equals("Blowfish02")){
 			BlockCipher cipher;
-			if(args[0] == "Blowfish01"){
+			if(args[0].equals("Blowfish01")){
 				cipher = new Blowfish01();
 				System.out.println("Using Blowfish01");
 			}else{

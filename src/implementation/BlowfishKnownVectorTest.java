@@ -55,7 +55,7 @@ public class BlowfishKnownVectorTest{
 
 
 public static void main (String[] args){
-  BlockCipher[] bcs = {new Blowfish01(), new Blowfish02(), new Blowfish03(), new Blowfish04(), new Blowfish05() , new Blowfish06(),  new Blowfish07()};
+  BlockCipher[] bcs = {new Blowfish01(), new Blowfish02()};
   for(BlockCipher c : bcs){
     boolean epassed = true;
     boolean dpassed = true;
@@ -87,8 +87,57 @@ public static void main (String[] args){
     }
 
     System.out.printf("Implementation: %s Encryption: %s Decryption: %s%n", c.getClass().getName().substring(15), epassed?"Passed":"Failed", dpassed?"Passed":"Failed");
+    
+    }
+  System.out.println();
+  System.out.println("Blowfish01:");
+  test1();
+  System.out.println();
+  System.out.println("Blowfish02:");
+  test2();
+  }
+
+public static void test1
+		()
+		{
+		  for (String[] i : TestCases )
+		  {
+		    Blowfish01 c = new Blowfish01();
+		    c.setKey(Hex.toByteArray(i[0]));
+		    String key = i[0];
+		    byte[] temp = Hex.toByteArray(i[1]);
+		    System.out.print("Test: Key=" + key +" Plaintext=" + i[1] + " => ");
+		    c.encrypt(temp);
+		    String ct = Hex.toString(temp).toUpperCase();
+		    System.out.print(ct + " Result: ");
+		    if (ct.equals(i[2])){
+		      System.out.println("Pass");
+		    } else {
+		      System.out.println("Fail! Should be: " + i[2]);
+		    }
+		  }
+		}
+
+public static void test2
+()
+{
+  for (String[] i : TestCases )
+  {
+    Blowfish02 c = new Blowfish02();
+    c.setKey(Hex.toByteArray(i[0]));
+    String key = i[0];
+    byte[] temp = Hex.toByteArray(i[1]);
+    System.out.print("Test: Key=" + key +" Plaintext=" + i[1] + " => ");
+    c.encrypt(temp);
+    String ct = Hex.toString(temp).toUpperCase();
+    System.out.print(ct + " Result: ");
+    if (ct.equals(i[2])){
+      System.out.println("Pass");
+    } else {
+      System.out.println("Fail! Should be: " + i[2]);
     }
   }
+}
 
 
 

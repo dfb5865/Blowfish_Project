@@ -5,7 +5,7 @@ import java.util.Arrays;
 import edu.rit.util.Hex;
 
 
-public class Blowfish02 implements BlockCipher
+public class Blowfish02 implements BlockCipher, Decryptable
 {
 
   int[] StandardP = {

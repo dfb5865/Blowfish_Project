@@ -34,17 +34,4 @@ public interface BlockCipher
 	 * @param  text  Plaintext (on input), ciphertext (on output).
 	 */
 	public void encrypt(byte[] text);
-	
-	/**
-	 * Decrypt the given ciphertext. <TT>text</TT> must be an array of bytes
-	 * whose length is equal to <TT>blockSize()</TT>. On input, <TT>text</TT>
-	 * contains the ciphertext block. The ciphertext block is decrypted using the
-	 * key specified in the most recent call to <TT>setKey()</TT>. On output,
-	 * <TT>text</TT> contains the plaintext block.
-	 *
-	 * @param  text  ciphertext (on input), plaintext (on output).
-	 *
-	 * @pre  <TT>setKey()</TT> has been called and keystream has been initialized.
-	 */
-	public void decrypt(byte[] text);
 }

@@ -7,7 +7,7 @@ import edu.rit.util.Hex;
 import edu.rit.util.Packing;
 
 
-public class Blowfish01 implements BlockCipher
+public class Blowfish01 implements BlockCipher, Decryptable
 {
   int[] StandardP = {
     0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344, 0xa4093822, 0x299f31d0,

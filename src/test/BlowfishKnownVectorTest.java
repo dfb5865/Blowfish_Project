@@ -1,4 +1,7 @@
-package implementation;
+package test;
+import implementation.BlockCipher;
+import implementation.Blowfish01;
+import implementation.Blowfish02;
 import edu.rit.util.Hex;
 
 

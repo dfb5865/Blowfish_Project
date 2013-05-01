@@ -198,7 +198,7 @@ public class Blowfish01 implements BlockCipher, Decryptable
 	int[] S2 = StandardS2;
 	int[] S3 = StandardS3;
 
-	//Assume inital key size of 64 bits (this will change later)
+	//Assume initial key size of 64 bits (this will change later)
 	int key_size = 8;
 
 	/**

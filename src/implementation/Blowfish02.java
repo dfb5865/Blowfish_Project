@@ -1,6 +1,6 @@
 package implementation;
 
-public class Blowfish02 implements BlockCipher, Decryptable
+public class Blowfish02 implements BlockCipher
 {
 
 	int[] StandardP = {

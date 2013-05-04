@@ -34,4 +34,6 @@ public interface BlockCipher
 	 * @param  text  Plaintext (on input), ciphertext (on output).
 	 */
 	public void encrypt(byte[] text);
+	
+	public void decrypt(byte[] text);
 }

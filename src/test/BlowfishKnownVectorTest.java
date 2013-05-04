@@ -2,7 +2,6 @@ package test;
 import implementation.BlockCipher;
 import implementation.Blowfish01;
 import implementation.Blowfish02;
-import implementation.Decryptable;
 import edu.rit.util.Hex;
 
 
@@ -79,7 +78,7 @@ public static void main (String[] args){
 
 
       //test decrypt
-      ((Decryptable)c).decrypt(text);
+      c.decrypt(text);
       ct = Hex.toString(text).toUpperCase();
       if (!(ct.equals(i[1]))){
 	dpassed = false;

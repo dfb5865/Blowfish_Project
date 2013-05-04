@@ -85,7 +85,6 @@ public class BFencrypt
 				}
 
 				cipher.encrypt(plaintext);
-				System.out.println(Hex.toString(plaintext));
 				dstfile.write(plaintext);
 
 				if(write0s)	//add a final plaintext block, padded with 0s

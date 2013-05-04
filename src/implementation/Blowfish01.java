@@ -3,7 +3,7 @@ package implementation;
 import edu.rit.util.Packing;
 
 
-public class Blowfish01 implements BlockCipher, Decryptable
+public class Blowfish01 implements BlockCipher
 {
 	//Initial values of p-array and s-boxes set to hex digits of pi
 	int[] StandardP = {

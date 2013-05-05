@@ -3,6 +3,7 @@ package fileEncryption;
 
 import implementation.BlockCipher;
 import implementation.Blowfish01;
+import implementation.Blowfish02;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,7 +19,7 @@ public class BFencrypt
 {
 	public static void main(String[] args)
 	{
-		BlockCipher cipher = new Blowfish01();
+		BlockCipher cipher = new Blowfish02();
 		byte[] key;
 
 		if(args.length!=3)

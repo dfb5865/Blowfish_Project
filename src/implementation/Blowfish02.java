@@ -240,7 +240,7 @@ public class Blowfish02 implements BlockCipher
 		byte[] generator = {0,0,0,0,0,0,0,0};
 		//Xor P with Key bytes
 
-		/**Changes here produce negligable benefits as this is only run once at initialization
+		/**Changes here produce negligible benefits as this is only run once at initialization
 		 *However, we wanted to remove the dependency on the packing library and the corresponding 
 		 *function calls.
 		 */
@@ -348,7 +348,7 @@ public class Blowfish02 implements BlockCipher
 
 
 		/**
-		 * After a few optimizations of the F-functions, simplifying and inlining it produded a large improvement. Additionaly, unrolling the loop
+		 * After a few optimizations of the F-functions, simplifying and inlining it produced a large improvement. Additionally, unrolling the loop
 		 * removed some of that overhead.
 		 */
 
@@ -415,7 +415,7 @@ public class Blowfish02 implements BlockCipher
 		xR ^= P[15];
 		xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
 
-		//after Fiestal
+		//after Feistel
 		xL ^= P[16];
 		xR ^= P[17];
 
@@ -522,7 +522,7 @@ public class Blowfish02 implements BlockCipher
 		xR ^= P[2];
 		xL ^= (((S0[xR >>> 24] + S1[xR >>> 16 & 0xFF]) ^ S2[xR >>> 8 & 0xFF]) + S3[xR & 0xFF]);
 
-		//after Fiestal
+		//after Feistel
 		xL ^= P[1];
 		xR ^= P[0];
 
